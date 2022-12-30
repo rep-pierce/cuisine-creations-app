@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: cuisine_creations_app_production
-  username: cuisine_creations_app
-  password: <%= ENV["CUISINE_CREATIONS_APP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
