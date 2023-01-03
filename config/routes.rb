@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
   resources :recipes, only: [:index, :show, :update, :create, :destroy]
   resources :users, only:[:index, :create, :show, :destroy, :update]
+
+  post "/signup", to: "users#create"
+  get "/me", to: "users#auth"
+
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+    skip_before_action :authorize, only: :create
+
   def index
     render json: User.all
+  end
+
+  #! :authorize and @current_user are in application control
+  def auth
+    render json: @current_user
   end
 
   def show
@@ -16,12 +23,13 @@ class UsersController < ApplicationController
 
   def create
     user = User.create!(user_params)
+    session[:user_id] = user.id
     render json: user, status: :created
   end
 
   private
 
   def user_params
-    params.permit(:name, :age, :image, :username, :password_digest)
+    params.permit(:name, :age, :image, :username, :password)
   end
 end
