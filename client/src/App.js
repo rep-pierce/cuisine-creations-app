@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import RecipePage from "./components/RecipePage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,6 +17,9 @@ function App() {
         <Switch>
           <Route path="/testing">
             <h1>Test Route</h1>
+          </Route>
+          <Route path="/recipes">
+            <RecipePage />
           </Route>
           <Route path="/">
             <h1>Page Count: {count}</h1>
