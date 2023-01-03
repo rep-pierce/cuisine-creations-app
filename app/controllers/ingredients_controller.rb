@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
     def index
-        render json: Ingredient.all 
+        render json: Ingredient.all
     end
 
     def show
@@ -9,8 +9,8 @@ class IngredientsController < ApplicationController
     end
 
     def create 
-    ingredients = Ingredient.create!(ingredients_params)
-    render json: ingredients, status: :created
+        ingredients = Ingredient.create!(ingredients_params)
+        render json: ingredients, status: :created
     end
 
 private
