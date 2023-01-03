@@ -8,7 +8,7 @@ class Recipe < ApplicationRecord
   has_many :joinirs, dependent: :destroy
   has_many :ingredients, through: :joinirs
 
-  name, presence: true
-  tags, inclusion: { in: [ "asian", "american", "italian", "vegan", "vegetarian", "mediterranean", "quick/easy", "indian", "mexican", "dessert" ] }
+  validates :name, presence: true
+  validates :tags, inclusion: { in: [ "asian", "american", "italian", "vegan", "vegetarian", "mediterranean", "quick/easy", "indian", "mexican", "dessert" ] }
 
 end
