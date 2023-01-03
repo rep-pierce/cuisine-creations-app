@@ -17,9 +17,9 @@ Joinir.destroy_all
 Faker::Food.unique.clear
 Faker::LoremFlickr.unique.clear
 
-User.create(name: "Alfred", age: 26, username: "Alfred", password_digest: "123", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
-User.create(name: "Ryan", age: 25, username: "Ryan", password_digest: "456", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
-User.create(name: "Bryan", age: 28, username: "Bryan", password_digest: "789", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
+User.create(name: "Alfred", age: 26, username: "Alfred", password: "123", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
+User.create(name: "Ryan", age: 25, username: "Ryan", password: "456", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
+User.create(name: "Bryan", age: 28, username: "Bryan", password: "789", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
 
 10.times { Recipe.create(name: Faker::Food.dish, user: User.all.sample, image: Faker::LoremFlickr.image(search_terms: ["food", "recipes"]), recipe_time: rand(0..20), tags: 'american') }
 
