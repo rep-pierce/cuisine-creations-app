@@ -9,7 +9,7 @@ class StepsController < ApplicationController
         render json: steps, status: :accepted
     end
 
-    def delete
+    def destroy
         steps = Step.find(params[:id])
         steps.destroy
         head :no_content
