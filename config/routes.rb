@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :joinirs
   resources :follows
-  resources :steps
+  resources :steps, only:[:create,:update,:destroy]
   resources :reviews
-  resources :ingredients
+  resources :ingredients, only:{:index, :create, :show}
   resources :favorites
   resources :recipes
-  resources :users
+  resources :users, only:{:index, :create, :show, :destroy, :update}
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get '*path',
       to: 'fallback#index',
       constraints: ->(req) { !req.xhr? && req.format.html? }
+
+
+
 end
