@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import RecipePage from "./components/RecipePage";
 import LoginForm from "./components/LoginForm";
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
 					<Route path="/testing">
 						<h1>Test Route</h1>
 					</Route>
+          <Route path="/recipespage">
+            <RecipePage />
+          </Route>
 					<Route path="/login">
 						<LoginForm />
 					</Route>
