@@ -9,13 +9,17 @@ User.destroy_all
 Recipe.destroy_all
 Ingredient.destroy_all
 Favorites.destroy_all
+Reviews.destroy_all
+Step.destroy_all
+Joinir.destroy_all
+
 
 Faker::Food.unique.clear
 Faker::LoremFlickr.unique.clear
 
 User.create(name: "Alfred", age: 26, username: "Alfred", password_digest: "123", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
-User.create(name: "Ryan", age: 25, username: "Ryan", password_digest: "456", image: "")
-User.create(name: "Bryan", age: 28, username: "Bryan", password_digest: "789", image: "")
+User.create(name: "Ryan", age: 25, username: "Ryan", password_digest: "456", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
+User.create(name: "Bryan", age: 28, username: "Bryan", password_digest: "789", image: Faker::LoremFlickr.image(search_terms: ["profile picture"]))
 
 10.times { Recipe.create(name: Faker::Food.dish, user: User.all.sample, image: Faker::LoremFlickr.image(search_terms: ["food", "recipes"])) }
 
