@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :joinirs
-  resources :follows
+  resources :joinirs, only: [:create, :destroy]
+  resources :follows, only: [:create, :destroy]
   resources :steps
-  resources :reviews
+  resources :reviews, only: [:update, :destroy, :create]
   resources :ingredients
-  resources :favorites
-  resources :recipes
+  resources :favorites, only: [:create, :destroy]
+  resources :recipes, only: [:index, :show, :update, :create, :destroy]
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
