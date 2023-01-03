@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-has_many :recipes
-has_many :favorites
+has_many :recipes, dependent: :destroy 
+has_many :favorites, dependent: :destroy 
 has_many :favorite_recipes, through: :favorites, source: :recipes
-has_many :reviews
+has_many :reviews, dependent: :destroy 
 has_many :reviewed_recipes, through: :reviews, source: :recipes
 
 name, presence: true
