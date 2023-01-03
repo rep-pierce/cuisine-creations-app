@@ -1,21 +1,27 @@
 class UsersController < ApplicationController
-    def index
-        render json: User.all
-    end
+  def index
+    render json: User.all
+  end
 
-    def show
-        user = User.find(params[:id])
-        render json: user
-    end
+  def show
+    user = User.find(params[:id])
+    render json: user
+  end
 
-    def create
-        user = User.create!(user_params)
-        render json: user, status: :created
-    end
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    head :no_content
+  end
 
-private
+  def create
+    user = User.create!(user_params)
+    render json: user, status: :created
+  end
 
-    def user_params
-        params.permit(:name, :age, :image, :username, :password_digest)
-    end
+  private
+
+  def user_params
+    params.permit(:name, :age, :image, :username, :password_digest)
+  end
 end
