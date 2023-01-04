@@ -24,8 +24,8 @@ function LogInPage({currentUser, setCurrentUser}){
             [name] : value
         }));
     }
-
-    const handleLog = () => {
+    
+    function handleResets(){
         setFormData({
             name: '',
             age: '',
@@ -33,16 +33,15 @@ function LogInPage({currentUser, setCurrentUser}){
             password: '',
             passwordConfirmation: ''
         })
+        setErrors([])
+    }
+
+    const handleLog = () => {
+        handleResets()
         setDisplay('login')
     }
     const handleNew = () => {
-        setFormData({
-            name: '',
-            age: '',
-            username: '',
-            password: '',
-            passwordConfirmation: ''
-        })
+        handleResets()
         setDisplay('new')
     }
     const handleHome = () => {
