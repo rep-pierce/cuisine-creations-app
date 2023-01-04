@@ -6,7 +6,7 @@ def index
 end
 
 def show
-  render json: current_user
+  render json: current_user, serializer: UserAllSerializer
 end
 
 def destroy

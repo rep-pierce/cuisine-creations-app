@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RecipePage from "./components/RecipePage";
 import LogInPage from "./components/LogInPage";
 import NavBar from "./components/NavBar";
+import Favorites from "./components/Favorites";
 import UserPage from "./components/UserPage";
 
 import RecipeView from "./components/RecipeView";
@@ -33,6 +34,9 @@ function App() {
 					</Route>
 					<Route path="/userlogin">
 						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
+					</Route>
+					<Route path="/favorites">
+						<Favorites currentUser={currentUser} />
 					</Route>
 					<Route path="/recipe/:id">
 						<RecipeView currentUser={currentUser}/>
