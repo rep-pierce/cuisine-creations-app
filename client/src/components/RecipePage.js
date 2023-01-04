@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import RecipeCard from "./RecipeCard"
 import ReviewCard from "./ReviewCard";
 
-function RecipePage() {
+function RecipePage({setRecipeID}) {
     const [recipes, setRecipes] = useState([])
     
     useEffect(()=> {
@@ -12,7 +12,7 @@ function RecipePage() {
     }, [])
 
     function createRecipesCards(){
-        return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)
+        return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} setRecipeID={setRecipeID}/>)
     }
 
     return (

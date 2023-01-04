@@ -3,9 +3,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RecipePage from "./components/RecipePage";
 import LogInPage from "./components/LogInPage";
 import NavBar from "./components/NavBar";
+import RecipeView from "./components/RecipeView";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [recipeID, setRecipeID] = useState(null)
   
   useEffect(() => {
     fetch("/auth")
@@ -26,8 +28,11 @@ function App() {
 					<Route path="/userlogin">
 						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
 					</Route>
+					<Route path="/recipe">
+						<RecipeView currentUser={currentUser} recipeID={recipeID} setRecipeID={setRecipeID}/>
+					</Route>
 					<Route path="/">
-						<RecipePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
+						<RecipePage setRecipeID={setRecipeID}/>
 					</Route>
 				</Switch>
 			</div>

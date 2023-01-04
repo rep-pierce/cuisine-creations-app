@@ -1,8 +1,14 @@
 import React from 'react'
+import { useHistory } from "react-router-dom";
 
-function RecipeCard({recipe}) {
+function RecipeCard({recipe, setRecipeID}) {
+  const history = useHistory()
+  function handleNav(){
+    setRecipeID(recipe.id)
+    history.push('/recipe')
+  }
   return (
-    <div>
+    <div onClick={handleNav}>
         <h1>{recipe.name}</h1>
         <img src={recipe.image} alt={recipe.name}/>
         <h2>{recipe.recipe_time}</h2>
