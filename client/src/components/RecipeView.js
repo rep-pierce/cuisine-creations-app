@@ -1,26 +1,37 @@
 import React, {useEffect, useState} from "react";
 import StepCard from "./StepCard";
+import {useParams} from 'react-router-dom'
 
-function RecipeView({currentUser, recipeID, setRecipeID}) {
-    const [recipe, setRecipe] = useState({})
+function RecipeView({currentUser}) {
+    const [recipe, setRecipe] = useState(null)
+    const {id} = useParams()
+    
 
     useEffect(()=> {
-        fetch(`/recipes/${recipeID}`)
-        .then(r => r.json())
-        .then(setRecipe)
-    }, [])
+        const fetchData = async () => {
+            const response = await fetch(`/recipes/${id}`)
+            const recipe = await response.json()
+            setRecipe(recipe)
+        }
 
-    // function createStepCards(){
-    //     return recipe.steps.map(step => <StepCard key={recipe.id} recipe={recipe} setRecipeID={setRecipeID}/>)
-    // }
+        fetchData()
+        
+    }, [id])
+
+    if (!recipe) {
+        return <div>Loading...</div>
+    }
+
+    function renderSteps(){
+        return recipe.steps.map(step => <StepCard step={step} key={step.id} />)
+    }
 
     return (
       <div>
         <h1>{recipe.name}</h1>
         <img src={recipe.image} alt={recipe.name} />
-        {/* <p>Created By: {recipe.user.username}</p> */}
-        {/* {createStepCards()} */}
-        {/* {currentUser.id === recipe.user.id ? <button>Delete Recipe</button> : null } */}
+        {renderSteps()}
+        {currentUser.id === recipe.user.id ? <button>Delete Recipe</button> : null}
       </div>
     )
 }   

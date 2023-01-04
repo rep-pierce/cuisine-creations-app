@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import RecipeCard from "./RecipeCard"
-import ReviewCard from "./ReviewCard";
 
-function RecipePage({setRecipeID}) {
+
+function RecipePage() {
     const [recipes, setRecipes] = useState([])
     
     useEffect(()=> {
@@ -12,12 +12,11 @@ function RecipePage({setRecipeID}) {
     }, [])
 
     function createRecipesCards(){
-        return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} setRecipeID={setRecipeID}/>)
+        return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe}/>)
     }
 
     return (
       <div>
-        <ReviewCard /> 
         {createRecipesCards()}
       </div>
     )

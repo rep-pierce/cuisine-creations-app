@@ -1,11 +1,10 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
 
-function RecipeCard({recipe, setRecipeID}) {
+function RecipeCard({recipe}) {
   const history = useHistory()
   function handleNav(){
-    setRecipeID(recipe.id)
-    history.push('/recipe')
+    history.push(`/recipe/${recipe.id}`)
   }
   return (
     <div onClick={handleNav}>

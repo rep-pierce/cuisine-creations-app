@@ -7,7 +7,6 @@ import RecipeView from "./components/RecipeView";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [recipeID, setRecipeID] = useState(null)
   
   useEffect(() => {
     fetch("/auth")
@@ -28,11 +27,11 @@ function App() {
 					<Route path="/userlogin">
 						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
 					</Route>
-					<Route path="/recipe">
-						<RecipeView currentUser={currentUser} recipeID={recipeID} setRecipeID={setRecipeID}/>
+					<Route path="/recipe/:id">
+						<RecipeView currentUser={currentUser}/>
 					</Route>
 					<Route path="/">
-						<RecipePage setRecipeID={setRecipeID}/>
+						<RecipePage/>
 					</Route>
 				</Switch>
 			</div>
