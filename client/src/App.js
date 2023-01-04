@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RecipePage from "./components/RecipePage";
-import LoginForm from "./components/LoginForm";
+import LogInPage from "./components/LogInPage";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
 		fetch("/hello")
@@ -18,29 +18,21 @@ function App() {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => setCurrentUser(user));
       }
     });
   }, []);
-
-  // if (!user) return <Login onLogin={setUser} />;
 
 
 	return (
 		<BrowserRouter>
 			<div className="App">
 				<Switch>
-					<Route path="/testing">
-						<h1>Test Route</h1>
-					</Route>
-          <Route path="/recipespage">
-            <RecipePage />
-          </Route>
 					<Route path="/login">
-						<LoginForm />
+						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
 					</Route>
 					<Route path="/">
-						<h1>Page Count: {count}</h1>
+						<RecipePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
 					</Route>
 				</Switch>
 			</div>
