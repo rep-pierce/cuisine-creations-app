@@ -18,6 +18,7 @@ function RecipePage() {
     return (
       <div>
         {createRecipesCards()}
+      
       </div>
     )
 }

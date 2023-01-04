@@ -14,6 +14,7 @@ function NavBar({currentUser, setCurrentUser}) {
         <NavLink exact to = "/">Home</NavLink>
         {!currentUser ? null : `Welcome ${currentUser.name}`}
         {!currentUser ? <NavLink to="/userlogin" > Log In </NavLink>: <button onClick={handleLogOut}>Log Out</button>}
+        <NavLink to="/userpage">User</NavLink>
 
     </nav>
   )
