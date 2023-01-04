@@ -21,7 +21,7 @@ function App() {
 		<BrowserRouter>
 			<div className="App">
 				<Switch>
-					<Route path="/login">
+					<Route path="/userlogin">
 						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
 					</Route>
 					<Route path="/">
