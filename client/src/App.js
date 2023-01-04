@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RecipePage from "./components/RecipePage";
 import LogInPage from "./components/LogInPage";
 import NavBar from "./components/NavBar";
+import UserPage from "./components/UserPage";
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -16,13 +18,18 @@ function App() {
       }
     });
   }, []);
-
+  const [formData, setFormData] = useState(
+	currentUser
+  )
 
 	return (
 		<BrowserRouter>
 			<div className="App">
 				<NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
 				<Switch>
+					<Route path="/userpage">
+						<UserPage currentUser={currentUser} setCurrentUser={setCurrentUser} setFormData={setFormData} formData={formData}/>
+					</Route>
 					<Route path="/userlogin">
 						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
 					</Route>

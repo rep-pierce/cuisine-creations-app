@@ -4,7 +4,6 @@ import RecipeCard from "./RecipeCard"
 
 function RecipePage({currentUser, setCurrentUser}) {
     const [recipes, setRecipes] = useState([])
-    const history = useHistory()
     
     useEffect(()=> {
         fetch("/recipes")
@@ -12,9 +11,6 @@ function RecipePage({currentUser, setCurrentUser}) {
         .then(setRecipes)
     }, [])
 
-    function handleClick(){
-      history.push('/userlogin')
-    }
 
     function createRecipesCards(){
         return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)
@@ -22,9 +18,9 @@ function RecipePage({currentUser, setCurrentUser}) {
 
     return (
       <div>
-
-
+      
         {createRecipesCards()}
+      
       </div>
     )
 }
