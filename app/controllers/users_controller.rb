@@ -1,18 +1,12 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorized, only: [:create]
 
   def index
     render json: User.all
   end
 
-  #! :authorize and @current_user are in application control
-  def auth
-    render json: @current_user
-  end
-
   def show
-    user = User.find(params[:id])
-    render json: user
+    render json: current_user
   end
 
   def destroy

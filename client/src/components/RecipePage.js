@@ -28,7 +28,7 @@ function RecipePage({currentUser, setCurrentUser}) {
     function handleLogOut(){
       fetch("/logout", {
           method: "DELETE",
-      }).then(() => setCurrentUser(""))
+      }).then(() => setCurrentUser(null))
       .then(console.log('logged out'))
     }
 

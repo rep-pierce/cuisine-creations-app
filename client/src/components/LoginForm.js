@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 
-function LoginForm({setErrors, setCurrentUser, history}) {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+function LoginForm({setCurrentUser, history}) {
+	const [formData, setFormData] = useState({
+        username:'',
+        password:''
+    })
+    const [errors, setErrors]
+
+    const {username, password} = formData
 
 	function handleUsernameChange(e){
         setUsername(e.target.value)
@@ -13,17 +18,15 @@ function LoginForm({setErrors, setCurrentUser, history}) {
 
 	function handleSubmit(e){
         e.preventDefault()
-        const loginParams = {
-            username: username,
-            password: password
+        const user = {
+            username,
+            password
         }
 
         fetch(`/login`, {
             method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(loginParams)
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(user)
         })
             .then(res => {
                 if(res.ok) {

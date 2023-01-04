@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+    skip_before_action :authorized, only: [:index, :show]
 
     def index
         recipes = Recipe.all
@@ -19,10 +20,6 @@ class RecipesController < ApplicationController
         recipe = Recipe.find(params[:id])
         recipe.destroy
         head :no_content
-    end
-
-    def update
-        
     end
 
     private
