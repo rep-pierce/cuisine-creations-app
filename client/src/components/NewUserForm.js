@@ -13,7 +13,9 @@ const NewUserForm = ({ formData, handleChange, setCurrentUser, setErrors, histor
         }
         fetch(`/users`,{
             method: "POST",
-            headers: {'Content-Type':'application/json'},
+            headers: {
+                'Content-Type':'application/json'
+            },
             body: JSON.stringify(user)
         }).then((r) => {
         if (r.ok) {

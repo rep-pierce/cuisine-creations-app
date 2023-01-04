@@ -34,19 +34,28 @@ function LogInPage({currentUser, setCurrentUser}){
             passwordConfirmation: ''
         })
         setDisplay('login')
-        setErrors([])
     }
     const handleNew = () => {
+        setFormData({
+            name: '',
+            age: '',
+            username: '',
+            password: '',
+            passwordConfirmation: ''
+        })
         setDisplay('new')
-        setErrors([])
+    }
+    const handleHome = () => {
+            history.push('/')
     }
 
     const handleRender = () => {
         if (display === "login") {
-            return <LoginForm 
-            errors={errors}
+            return <LoginForm
+            username={formData.username}
+            password={formData.password}
+            handleChange={handleChange}
             setErrors={setErrors}
-            currentUser={currentUser}
             setCurrentUser={setCurrentUser}
             history={history}
             />
@@ -57,14 +66,11 @@ function LogInPage({currentUser, setCurrentUser}){
             setCurrentUser={setCurrentUser}
             setErrors={setErrors}
             history={history}
-            errors={errors}
             />
         }
     }
 
-    const handleHome = () => {
-        history.push('/')
-    }
+    
 
     return (
         <div className='Login-card'>

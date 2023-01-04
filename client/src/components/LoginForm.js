@@ -1,19 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-function LoginForm({setErrors, setCurrentUser, history}) {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-
-	function handleUsernameChange(e){
-        setUsername(e.target.value)
-    }
-    function handlePasswordChange(e){
-        setPassword(e.target.value)
-    }
+function LoginForm({setErrors, setCurrentUser, history, username, password, handleChange}) {
 
 	function handleSubmit(e){
         e.preventDefault()
-        const loginParams = {
+        const user = {
             username: username,
             password: password
         }
@@ -23,15 +14,14 @@ function LoginForm({setErrors, setCurrentUser, history}) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(loginParams)
+            body: JSON.stringify(user)
+        }).then((r) => {
+            if(r.ok) {
+                r.json().then((user) => setCurrentUser(user)).then(history.push('/'))
+            } else {
+                r.json().then((err) => setErrors(err.errors))
+            }
         })
-            .then(res => {
-                if(res.ok) {
-                    res.json().then(setCurrentUser).then(history.push('/'))
-                } else {
-                    res.json().then( (err) => setErrors(err.errors) )
-                }
-            })
     }
 
 	return (
@@ -39,11 +29,11 @@ function LoginForm({setErrors, setCurrentUser, history}) {
             <form className='login-form' onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" value={username} onChange={(e) => handleUsernameChange(e)} />
+                    <input type="text" id="username" name="username" value={username} onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="pass" name="password" value={password} onChange={(e) => handlePasswordChange(e)} />
+                    <input type="password" id="pass" name="password" value={password} onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
                     <button className='button' type="submit" value="Login">
