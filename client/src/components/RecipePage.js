@@ -13,7 +13,7 @@ function RecipePage({currentUser, setCurrentUser}) {
     }, [])
 
     function handleClick(){
-      history.push('/login')
+      history.push('/userlogin')
     }
 
 
