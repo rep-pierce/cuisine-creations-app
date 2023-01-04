@@ -16,26 +16,14 @@ function RecipePage({currentUser, setCurrentUser}) {
       history.push('/userlogin')
     }
 
-
     function createRecipesCards(){
         return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)
     }
 
-    function handleCheck(){
-      console.log(currentUser)
-    }
-
-    function handleLogOut(){
-      fetch("/logout", {
-          method: "DELETE",
-      }).then(() => setCurrentUser(""))
-      .then(console.log('logged out'))
-    }
-
     return (
       <div>
-        <button onClick={handleCheck}>Check if Logged In</button>
-        {!currentUser ? <button onClick={handleClick}>Log In</button> : <button onClick={handleLogOut}>Log Out</button>}
+
+
         {createRecipesCards()}
       </div>
     )
