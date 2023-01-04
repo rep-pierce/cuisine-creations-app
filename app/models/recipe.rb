@@ -1,9 +1,9 @@
 class Recipe < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  has_many :favorited_users, through: :favorites, source: :users
+  has_many :favorited_users, through: :favorites, source: :user
   has_many :reviews, dependent: :destroy
-  has_many :reviewed_users, through: :reviews, source: :users
+  has_many :reviewed_users, through: :reviews, source: :user
   has_many :steps, dependent: :destroy
   has_many :joinirs, dependent: :destroy
   has_many :ingredients, through: :joinirs

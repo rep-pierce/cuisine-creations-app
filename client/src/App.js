@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RecipePage from "./components/RecipePage";
 import LogInPage from "./components/LogInPage";
 import NavBar from "./components/NavBar";
+import Favorites from "./components/Favorites";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -25,6 +26,9 @@ function App() {
 				<Switch>
 					<Route path="/userlogin">
 						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
+					</Route>
+					<Route path="/favorites">
+						<Favorites currentUser={currentUser} />
 					</Route>
 					<Route path="/">
 						<RecipePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
