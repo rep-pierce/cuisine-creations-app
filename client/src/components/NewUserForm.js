@@ -19,7 +19,7 @@ const NewUserForm = ({ formData, handleChange, setCurrentUser, setErrors, histor
         if (r.ok) {
           r.json().then((user) => setCurrentUser(user)).then(history.push('/'))
         } else {
-          r.json().then((err) => setErrors(err.errors)).then(console.log(errors));
+          r.json().then((err) => setErrors(err.errors));
         }
       })
     }

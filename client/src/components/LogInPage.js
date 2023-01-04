@@ -72,7 +72,7 @@ function LogInPage({currentUser, setCurrentUser}){
             <button className='button' onClick={handleLog}>Login to Your Account</button>
             {handleRender(display)}
             <button className='button' onClick={handleHome}>Return to Homepage</button>
-            { !errors ? null : errors.map(error => <p>{error}</p>)}
+            { !errors ? null : errors.map(error => <p key={error}>{error}</p>)}
         </div>
     )
 }
