@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import RecipeCard from "./RecipeCard"
 
 
-function RecipePage() {
+function RecipePage({currentUser}) {
     const [recipes, setRecipes] = useState([])
     
     useEffect(()=> {

@@ -61,7 +61,7 @@ function App() {
 					</Route>
           <Route path="/">
             <RecipePageStyle />
-						<RecipePage />
+						<RecipePage currentUser={currentUser} />
 					</Route>
 				</Switch>
 			</div>
