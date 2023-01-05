@@ -9,5 +9,6 @@ has_many :reviewed_recipes, through: :reviews, source: :recipe
 validates :name, presence: true
 validates :age, presence: true
 validates :username, presence: true, uniqueness: true
+# validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*[^a-zA-Z]).+\z/, message: "must contain at least one special character" }
 
 end
