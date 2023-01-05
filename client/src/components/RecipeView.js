@@ -18,11 +18,12 @@ function RecipeView({currentUser}) {
         
     }, [id])
 
-    if (!recipe) {
+    if (!recipe || !currentUser) {
         return <div>Loading...</div>
     }
 
-    function renderSteps(){
+    function renderSteps() {
+        // debugger
         return recipe.steps.map(step => <StepCard step={step} key={step.id} />)
     }
 

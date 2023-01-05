@@ -11,19 +11,33 @@ function NavBar({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<nav>
-			<NavLink exact to="/">
+		<div className="navbar">
+			{!currentUser ? null : `Welcome ${currentUser.name}`}
+			<NavLink className="navbar-item" exact to="/">
 				Home
 			</NavLink>
-			{!currentUser ? null : `Welcome ${currentUser.name}`}
 			{!currentUser ? (
-				<NavLink to="/userlogin"> Log In </NavLink>
+				<NavLink className="navbar-item" to="/userlogin">
+					{" "}
+					Log In{" "}
+				</NavLink>
 			) : (
-				<button onClick={handleLogOut}>Log Out</button>
+				<button className="navbar-item" onClick={handleLogOut}>
+					Log Out
+				</button>
 			)}
-        <NavLink to="/userpage">User</NavLink>
-			{currentUser ? <NavLink to="/favorites"> Favorites </NavLink> : null}
-		</nav>
+			{!currentUser ? null : (
+				<NavLink className="navbar-item" to="/userpage">
+					User
+				</NavLink>
+			)}
+			{currentUser ? (
+				<NavLink className="navbar-item" to="/favorites">
+					{" "}
+					Favorites{" "}
+				</NavLink>
+			) : null}
+		</div>
 	);
 }
 export default NavBar;

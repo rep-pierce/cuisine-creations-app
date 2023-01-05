@@ -1,48 +1,74 @@
 import React from "react";
 
-function LoginForm({setErrors, setCurrentUser, history, username, password, handleChange}) {
+function LoginForm({
+	setErrors,
+	setCurrentUser,
+	history,
+	username,
+	password,
+	handleChange,
+}) {
+	function handleSubmit(e) {
+		e.preventDefault();
+		const user = {
+			username: username,
+			password: password,
+		};
 
-	function handleSubmit(e){
-        e.preventDefault()
-        const user = {
-            username: username,
-            password: password
-        }
-
-        fetch(`/login`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        }).then((r) => {
-            if(r.ok) {
-                r.json().then((user) => setCurrentUser(user)).then(history.push('/'))
-            } else {
-                r.json().then((err) => setErrors(err.errors))
-            }
-        })
-    }
+		fetch(`/login`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(user),
+		}).then((r) => {
+			if (r.ok) {
+				r.json()
+					.then((user) => setCurrentUser(user))
+					.then(history.push("/"));
+			} else {
+				r.json().then((err) => setErrors(err.errors));
+			}
+		});
+	}
 
 	return (
-        <div className='login-form-div'>
-            <form className='login-form' onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" value={username} onChange={(e) => handleChange(e)} />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="pass" name="password" value={password} onChange={(e) => handleChange(e)} />
-                </div>
-                <div>
-                    <button className='button' type="submit" value="Login">
-                    Login
-                    </button>
-                </div>
-            </form>
-        </div>
-    )
+		<div className="login-form-div">
+			<form className="login-form" onSubmit={handleSubmit}>
+				<div>
+					<label className="login-label" htmlFor="username">
+						Username:{" "}
+					</label>
+					<input
+						className="login-input"
+						type="text"
+						id="username"
+						name="username"
+						value={username}
+						onChange={(e) => handleChange(e)}
+					/>
+				</div>
+				<div>
+					<label className="login-label" htmlFor="password">
+						Password:{" "}
+					</label>
+					<input
+						className="login-input"
+						type="password"
+						id="pass"
+						name="password"
+						value={password}
+						onChange={(e) => handleChange(e)}
+					/>
+				</div>
+				<div>
+					<button className="login-button" type="submit" value="Login">
+						Login
+					</button>
+				</div>
+			</form>
+		</div>
+	);
 }
 
 export default LoginForm;

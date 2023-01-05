@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard";
+import ConfettiDrop from "./Confetti";
+
+
 
 function Favorites({ currentUser }) {
-	if (!currentUser) {
+const [favorites, setFavorites] = useState([])
+  useEffect(() => {
+    const favoriteData = async () => {
+      const favorites = await currentUser.favorite_recipes
+      setFavorites(favorites)
+    }
+    favoriteData()
+   }, [currentUser.favorite_recipes])
+	if (!favorites) {
 		return <div>...loading</div>;
 	}
 
   function createFavorites() {
     // debugger
-		return currentUser.favorite_recipes.map((recipe) => (
+		return favorites.map((recipe) => (
 			<RecipeCard key={recipe.id + 1000000000} recipe={recipe} />
 		));
 	}
-	return <div>{createFavorites()}</div>;
+  return <div className="recipe-favorites">
+    <ConfettiDrop/>
+    {createFavorites()}</div>;
 }
 
 export default Favorites;

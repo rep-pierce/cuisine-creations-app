@@ -5,44 +5,63 @@ import LogInPage from "./components/LogInPage";
 import NavBar from "./components/NavBar";
 import Favorites from "./components/Favorites";
 import UserPage from "./components/UserPage";
-
 import RecipeView from "./components/RecipeView";
+import RecipePageStyle from "./styled-components/RecipePageStyle";
+import NavBarStyle from "./styled-components/NavBarStyle";
+import FavoriteStyle from "./styled-components/FavoriteStyle";
+import LoginStyle from "./styled-components/LoginStyle";
+import UserFormStyle from "./styled-components/UserFormStyle";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  
-  useEffect(() => {
-    fetch("/auth")
-	.then((r) => {
-      if (r.ok) {
-        r.json()
-		.then((user) => setCurrentUser(user));
-      }
-    });
-  }, []);
-  const [formData, setFormData] = useState(
-	currentUser
-  )
+	const [currentUser, setCurrentUser] = useState(null);
+
+	useEffect(() => {
+		fetch("/auth").then((r) => {
+			if (r.ok) {
+				r.json().then((user) => setCurrentUser(user));
+			}
+		});
+	}, []);
+	const [formData, setFormData] = useState({
+		name: "",
+		age: "",
+		username: "",
+		password: "",
+		passwordConfirmation: "",
+	});
 
 	return (
 		<BrowserRouter>
-			<div className="App">
-				<NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+      <div className="App">
+        <NavBarStyle />
+				<NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
 				<Switch>
-					<Route path="/userpage">
-						<UserPage currentUser={currentUser} setCurrentUser={setCurrentUser} setFormData={setFormData} formData={formData}/>
+          <Route path="/userpage">
+            <UserFormStyle/>
+						<UserPage
+							currentUser={currentUser}
+							setCurrentUser={setCurrentUser}
+							setFormData={setFormData}
+							formData={formData}
+						/>
 					</Route>
-					<Route path="/userlogin">
-						<LogInPage currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <Route path="/userlogin">
+            <LoginStyle/>
+						<LogInPage
+							currentUser={currentUser}
+							setCurrentUser={setCurrentUser}
+						/>
 					</Route>
-					<Route path="/favorites">
+          <Route path="/favorites">
+            <FavoriteStyle/>
 						<Favorites currentUser={currentUser} />
 					</Route>
 					<Route path="/recipe/:id">
-						<RecipeView currentUser={currentUser}/>
+						<RecipeView currentUser={currentUser} />
 					</Route>
-					<Route path="/">
-						<RecipePage/>
+          <Route path="/">
+            <RecipePageStyle />
+						<RecipePage />
 					</Route>
 				</Switch>
 			</div>

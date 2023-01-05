@@ -15,11 +15,13 @@ function RecipePage() {
         return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe}/>)
     }
 
-    return (
-      <div>
+  return (
+      <>
+        <h1 className="font-effect"> Cuisine Creations </h1>
+      <div className="recipe-page">
         {createRecipesCards()}
-      
       </div>
+      </>
     )
 }
 
