@@ -1,13 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+
+
 function NavBar({ currentUser, setCurrentUser }) {
+	const history = useHistory()
 	//navbar include home, recipes, user, create new recipe, login
 	function handleLogOut() {
 		fetch("/logout", {
 			method: "DELETE",
 		})
 			.then(() => setCurrentUser(""))
-			.then(console.log("logged out"));
+			.then(history.push('/'));
 	}
 
 	return (

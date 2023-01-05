@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import { useParams } from 'react-router-dom';
+import React from "react";
 
 function UserPage({ currentUser, setCurrentUser, formData, setFormData }) {
 	if (!currentUser) {
@@ -57,9 +56,9 @@ function UserPage({ currentUser, setCurrentUser, formData, setFormData }) {
 						/>
 					</div>
 					<div>
-						<labe className="login-label" htmlFor="username">
+						<label className="login-label" htmlFor="username">
 							Username:
-						</labe>
+						</label>
                         <input
                              className="login-input"
 							type="text"
