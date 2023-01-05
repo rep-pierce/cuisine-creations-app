@@ -40,6 +40,12 @@ function NavBar({ currentUser, setCurrentUser }) {
 					Favorites{" "}
 				</NavLink>
 			) : null}
+			{currentUser ? (
+				<NavLink className="navbar-item" to="/recipeform">
+					{" "}
+					New Recipe{" "}
+				</NavLink>
+			) : null}
 		</div>
 	);
 }
