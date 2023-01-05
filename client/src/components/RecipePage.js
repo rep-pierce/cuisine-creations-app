@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import RecipeCard from "./RecipeCard"
 
 
-function RecipePage({currentUser}) {
-    const [recipes, setRecipes] = useState([])
+function RecipePage({recipes, setRecipes, currentUser}) {
+   
     
     useEffect(()=> {
         fetch("/recipes")

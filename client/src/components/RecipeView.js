@@ -1,40 +1,48 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import StepCard from "./StepCard";
-import {useParams} from 'react-router-dom'
+import { useParams, useHistory } from "react-router-dom";
 
-function RecipeView({currentUser}) {
-    const [recipe, setRecipe] = useState(null)
-    const {id} = useParams()
-    
+function RecipeView({ recipes, setRecipes, currentUser }) {
+    const [recipe, setRecipe] = useState(null);
+    const history = useHistory()
+	const { id } = useParams();
 
-    useEffect(()=> {
-        const fetchData = async () => {
-            const response = await fetch(`/recipes/${id}`)
-            const recipe = await response.json()
-            setRecipe(recipe)
-        }
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await fetch(`/recipes/${id}`);
+			const recipe = await response.json();
+			setRecipe(recipe);
+		};
 
-        fetchData()
-        
-    }, [id])
+		fetchData();
+	}, [id]);
 
-    if (!recipe || !currentUser) {
-        return <div>Loading...</div>
-    }
+	if (!recipe || !currentUser) {
+		return <div>Loading...</div>;
+	}
 
-    function renderSteps() {
-        // debugger
-        return recipe.steps.map(step => <StepCard step={step} key={step.id} />)
-    }
+	function renderSteps() {
+		// debugger
+		return recipe.steps.map((step) => <StepCard step={step} key={step.id} />);
+	}
 
-    return (
-      <div>
-        <h1>{recipe.name}</h1>
-        <img src={recipe.image} alt={recipe.name} />
-        {renderSteps()}
-        {currentUser.id === recipe.user.id ? <button>Delete Recipe</button> : null}
-      </div>
-    )
-}   
+	function deleteRecipe() {
+		fetch(`/recipes/${recipe.id}`, {
+			method: "DELETE",
+        });
+        history.push("/")
+	}
 
-export default RecipeView
+	return (
+		<div>
+			<h1>{recipe.name}</h1>
+			<img src={recipe.image} alt={recipe.name} />
+			{renderSteps()}
+			{currentUser.id === recipe.user.id ? (
+				<button onClick={deleteRecipe}>Delete Recipe</button>
+			) : null}
+		</div>
+	);
+}
+
+export default RecipeView;
