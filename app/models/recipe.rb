@@ -9,6 +9,14 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :joinirs
 
   validates :name, presence: true
-  validates :tags, inclusion: { in: [ "asian", "american", "italian", "vegan", "vegetarian", "mediterranean", "quick/easy", "indian", "mexican", "dessert" ] }
+  validates :tags, inclusion: { in: ["asian", "american", "italian", "vegan", "vegetarian", "mediterranean", "quick/easy", "indian", "mexican", "dessert"] }
 
+  def average_rating
+    average_recipe = self.reviews.average(:rating).to_i
+  end
+
+  def self.best_recipes
+    Recipe.all.sort_by { |recipe| recipe.average_rating }.reverse.each do |recipe|
+    end
+  end
 end
