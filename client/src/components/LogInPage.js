@@ -44,9 +44,6 @@ function LogInPage({ currentUser, setCurrentUser }) {
 		handleResets();
 		setDisplay("new");
 	};
-	const handleHome = () => {
-		history.push("/");
-	};
 
 	const handleRender = () => {
 		if (display === "login") {
@@ -84,7 +81,6 @@ function LogInPage({ currentUser, setCurrentUser }) {
 			</button>
 			<br />
 			{handleRender(display)}
-			{/* <button className='button' onClick={handleHome}>Return to Homepage</button> */}
 			{!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
 		</div>
 	);
