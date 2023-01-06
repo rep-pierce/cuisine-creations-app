@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import ReviewCard from './ReviewCard'
+import RecipeCard from './RecipeCard'
 
-function UserPage({ currentUser, setCurrentUser, formData, setFormData }) {
+
+function UserPage({ currentUser, setCurrentUser, recipes }) {
+    const [errors, setErrors] = useState([])
+    const[ formData, setFormData]= useState({
+        name: "",
+        age: "",
+        username: "",
+        password: ""
+    })
+useEffect(()=>{
+    const formCreate = async() => {
+        const user = await currentUser
+        setFormData({
+                name: user.name,
+                age: user.age,
+                username: user.username,
+                password: ""
+            })
+    }
+    formCreate()
+},[currentUser])    
+
+    
 	if (!currentUser) {
 		return <div>...loading</div>;
 	}
@@ -14,20 +39,42 @@ function UserPage({ currentUser, setCurrentUser, formData, setFormData }) {
 	};
 
 	function handleUpdate(e) {
-		e.preventDefault();
+	e.preventDefault()
+        const patchUser={
+            name: formData.name,
+            age: formData.age,
+            username: formData.username,
+            password: formData.password
+        }
+        
 		fetch(`/users/${currentUser.id}`, {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(currentUser),
+			body: JSON.stringify(patchUser),
 		})
-			.then((r) => r.json())
-			.then(setCurrentUser);
+			.then((r) => {
+                if(r.ok){
+                    r.json()
+                    .then(setFormData)
+                    
+                } else {
+                    r.json()
+                    .then((err)=> setErrors(err.errors))
+                }    
+            })
+		;
 	}
-
+    function reviewMapped (){
+        return currentUser.reviews.map(review => <ReviewCard review={review} key={Math.random()*1000000}/>)
+    } 
+    function recipeMapped(){
+        return currentUser.recipes.map(recipe => <RecipeCard recipe={recipe} key={Math.random()*1000000}/> )
+    }
+    
 	return (
-		<div>
+		
             <div className="New-user-card">
                 <br/>
 				<form className="login-form" onSubmit={handleUpdate}>
@@ -84,8 +131,11 @@ function UserPage({ currentUser, setCurrentUser, formData, setFormData }) {
 						<input className="login-button" type="submit" />
 					</div>
 				</form>
-			</div>
-		</div>
+                {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
+                {reviewMapped()}
+                {recipeMapped()}
+            </div>
+
 	);
 }
 

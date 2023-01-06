@@ -4,4 +4,8 @@ class Review < ApplicationRecord
 
   validates :rating, presence: true, inclusion: { in: ( 0..5 ) }
 
+def review_for
+    "Review for #{self.recipe.name}" 
+end
+
 end
