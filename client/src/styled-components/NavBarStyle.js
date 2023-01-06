@@ -3,11 +3,12 @@ import { createGlobalStyle } from "styled-components";
 const NavBarStyle = createGlobalStyle`
 
 body{
-  background-color: papayawhip
+  background-color: #FFFFE0
 }
 
+
 .navbar {
-  background-color: #76D699;
+  background-color: #FF6347;
   font-weight: 500;
   color: black; 
   display: flex; 

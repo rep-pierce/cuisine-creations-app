@@ -3,13 +3,15 @@ import { createGlobalStyle } from "styled-components";
 const FavoriteStyle = createGlobalStyle`
 
 .recipes{
-  background-color: #F1F9F8;
+  background-color: #FFFFFF;
   width: 300px;
-  border: 2px solid #000000;
+  height: 100%;
+  /* border: 2px solid #000000; */
   box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
   text-align: center;
   margin: 60px;
-  font-family: proza libre;
+  font-family: "Frank Ruhl Libre",Georgia,serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .recipe-favorites{
@@ -22,12 +24,21 @@ const FavoriteStyle = createGlobalStyle`
 }
 
 .recipes:hover {
-   border-color: gold; 
+   border: 4px solid gold; 
 }
 
+.off{
+  display: none;
+}
+
+.on{
+  display: none;
+}
+
+
 img{
-  width: 200px;
-  height: 200px;
+  display: block;
+  margin: 0;
 }
 
 `;

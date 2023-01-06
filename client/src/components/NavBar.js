@@ -19,16 +19,6 @@ function NavBar({ currentUser, setCurrentUser }) {
 			<NavLink className="navbar-item" exact to="/">
 				Home
 			</NavLink>
-			{!currentUser ? (
-				<NavLink className="navbar-item" to="/userlogin">
-					{" "}
-					Log In{" "}
-				</NavLink>
-			) : (
-				<button className="navbar-item" onClick={handleLogOut}>
-					Log Out
-				</button>
-			)}
 			{!currentUser ? null : (
 				<NavLink className="navbar-item" to="/userpage">
 					User
@@ -46,6 +36,16 @@ function NavBar({ currentUser, setCurrentUser }) {
 					New Recipe{" "}
 				</NavLink>
 			) : null}
+			{!currentUser ? (
+				<NavLink className="navbar-item" to="/userlogin">
+					{" "}
+					Log In{" "}
+				</NavLink>
+			) : (
+				<button className="navbar-item" onClick={handleLogOut}>
+					Log Out
+				</button>
+			)}
 		</div>
 	);
 }

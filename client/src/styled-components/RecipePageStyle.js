@@ -3,22 +3,28 @@ import { createGlobalStyle } from "styled-components";
 const RecipePageStyle = createGlobalStyle`
 
 .recipes{
-  background-color: #F1F9F8;
+  background-color: #FFFFFF;
   width: 300px;
-  border: 2px solid #000000;
+  height: 50%;
+  /* border: 4px solid #4F4F4F; */
   box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
   text-align: center;
   margin: 60px;
   font-family: proza libre;
+  padding: 0;
+}
+
+p{
+  margin-right: 150px
 }
 
 .recipe-page{
   margin-left: 50px;
-  display: inline-block;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding:0;
 }
 
 .font-effect{
@@ -27,20 +33,30 @@ const RecipePageStyle = createGlobalStyle`
   justify-content: center;
   font-size: 50px;
   /* color: #117777; */
-  background: linear-gradient( #004D4D, #A0D3E8);
+  background: linear-gradient( #8B0000, #FFD700);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-
-.recipes:hover {
-   border-color: gold; 
+img{
+  display: block;
+  margin: 0;
+  height: 20rem;
+  width: 100%; 
+  /* object-fit: cover; */
 }
 
-img{
-  width: 200px;
-  height: 200px;
+.recipes:hover {
+   border: 4px solid gold; 
+}
+
+.on{
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: default
 }
 
 `;

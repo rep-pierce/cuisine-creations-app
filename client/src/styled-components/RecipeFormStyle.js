@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 const RecipeFormStyle = createGlobalStyle`
 
+
+
 .login-form {
   background-color: #ffffff; 
   border: 1px solid #dbdbdb; 
