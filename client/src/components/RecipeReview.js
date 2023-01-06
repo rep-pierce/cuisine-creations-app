@@ -53,7 +53,9 @@ function RecipeReview({history, rID, currentUser}) {
 				</select>
 				<button className="button">Submit</button>
 			</form>
+			<div>
 			{!errors ? null : errors.map((error) => <p className="error" key={error}>{error}</p>)}
+			</div>
 		</div>
 	);
 }

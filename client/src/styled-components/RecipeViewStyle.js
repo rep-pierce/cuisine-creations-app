@@ -125,9 +125,7 @@ img {
 }
 
 .form {
-  position: absolute;
-  bottom: -350px;
-  right: 260px;
+
   text-align: center;
 }
 
