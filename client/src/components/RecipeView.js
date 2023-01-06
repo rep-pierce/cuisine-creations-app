@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import StepCard from "./StepCard";
 import { useParams, useHistory } from "react-router-dom";
+import ReviewCard from "./ReviewCard";
 
 function RecipeView({ recipes, setRecipes, currentUser }) {
-    const [recipe, setRecipe] = useState(null);
-    const history = useHistory()
+	const [recipe, setRecipe] = useState(null);
+	const history = useHistory();
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -29,8 +30,18 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 	function deleteRecipe() {
 		fetch(`/recipes/${recipe.id}`, {
 			method: "DELETE",
-        });
-        history.push("/")
+		});
+		history.push("/");
+	}
+
+	function handleReviews() {
+		return recipe.reviews.map((review) => (
+			<ReviewCard
+				review={review.review}
+				rating={review.rating}
+				key={Math.random() * 1000000}
+			/>
+		));
 	}
 
 	return (
@@ -41,6 +52,7 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 			{currentUser.id === recipe.user.id ? (
 				<button onClick={deleteRecipe}>Delete Recipe</button>
 			) : null}
+			{handleReviews()}
 		</div>
 	);
 }

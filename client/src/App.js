@@ -10,9 +10,10 @@ import RecipePageStyle from "./styled-components/RecipePageStyle";
 import NavBarStyle from "./styled-components/NavBarStyle";
 import FavoriteStyle from "./styled-components/FavoriteStyle";
 import LoginStyle from "./styled-components/LoginStyle";
-import UserFormStyle from "./styled-components/UserFormStyle";
+import UserFormStyle from "./styled-components/UserPageStyle";
 import RecipeFormStyle from "./styled-components/RecipeFormStyle";
 import RecipeForm from "./components/RecipeForm";
+import RecipeViewStyle from "./styled-components/RecipeViewStyle";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -64,6 +65,7 @@ function App() {
 						<Favorites currentUser={currentUser} />
 					</Route>
 					<Route path="/recipe/:id">
+						<RecipeViewStyle/>
 						<RecipeView recipes={recipes} setRecipes={setRecipes} currentUser={currentUser} />
 					</Route>
 					<Route path="/">

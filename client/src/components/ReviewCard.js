@@ -1,15 +1,23 @@
-import React from 'react'
-import StarRating from './StarRating'
+import React from "react";
+import StarRating from "./StarRating";
 
-function ReviewCard({review}) {
-
-  return (
-    <div>
-      <h3>{review.review_for}</h3>
-      <p>{review.review}</p>
-      <StarRating />
-    </div>
-  )
+function ReviewCard({ review, rating, reviewFor, id }) {
+  
+	function handleDelete() {
+		fetch(`/reviews/${id}`, {
+			method: "DELETE",
+    });
+   window.location.reload()
+	}
+	return (
+		<div>
+			{!reviewFor ? null : <h3>{reviewFor}</h3>}
+			<p>{review}</p>
+      <StarRating rRating={rating} />
+      <br/>
+			{!reviewFor ? null : <button onClick={handleDelete}> Delete </button>}
+		</div>
+	);
 }
 
-export default ReviewCard
+export default ReviewCard;

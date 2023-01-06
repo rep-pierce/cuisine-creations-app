@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const UserFormStyle = createGlobalStyle`
+const UserPageStyle = createGlobalStyle`
 
 .login-form {
   background-color: #ffffff; 
@@ -45,6 +45,43 @@ const UserFormStyle = createGlobalStyle`
   cursor: pointer; 
 }
 
+.parent-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+.container {
+width: 22rem;
+height: 26rem;
+background: #FFFFFF;
+overflow-x: scroll;
+float: left;
+text-align: center;
+box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
+}
+
+.container div {
+
+}
+
+
+
+.on{
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: default
+}
+.off{
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: default
+}
+
 `;
 
-export default UserFormStyle;
+export default UserPageStyle;
