@@ -1,10 +1,38 @@
 import { useState } from "react";
 
-function RecipeReview() {
+function RecipeReview({history, rID, currentUser}) {
 	const [rating, setRating] = useState(0);
 	const [review, setReview] = useState("");
+	const [errors, setErrors] = useState([]);
 
-	function handleSubmit() {}
+
+
+	function handleSubmit(e) {
+		e.preventDefault()
+		const reviewForm = {
+			user_id: currentUser.id,
+			recipe_id: rID,
+			rating: parseInt(rating),
+			review: review
+		}
+		console.log(reviewForm)
+		fetch(`/reviews`,{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(reviewForm),
+		})
+		.then((r) => {
+			if (r.ok) {
+				r.json()
+					.then(window.location.reload())
+	
+			} else {
+				r.json().then((err) => setErrors(err.errors));
+			}
+		});
+	}
 
 	return (
 		<div className="form">
@@ -25,6 +53,7 @@ function RecipeReview() {
 				</select>
 				<button className="button">Submit</button>
 			</form>
+			{!errors ? null : errors.map((error) => <p className="error" key={error}>{error}</p>)}
 		</div>
 	);
 }

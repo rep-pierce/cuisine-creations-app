@@ -53,7 +53,7 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 
 	return (
         <div className="recipe-view">
-            <RecipeReview />
+            <RecipeReview history={history} rID={recipe.id} currentUser={currentUser} />
 			<div className="recipe-header">
 				<h1>{recipe.name}</h1>
 			</div>
