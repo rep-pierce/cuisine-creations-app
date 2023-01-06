@@ -1,29 +1,46 @@
 import React, {useState} from 'react'
 
-function IngredientForm() {
+function IngredientForm({allIngredients, setAllIngredients, setDisplay}) {
     const [formData, setFormData] = useState({
-        
+        name: '',
+        image: ''
     })
+    const [errors, setErrors] = useState([])
+
+    const handleChange = (e) => {
+		const value = e.target.value;
+		const name = e.target.name;
+		setFormData((formData) => ({
+			...formData,
+			[name]: value,
+		}));
+	};
+
     function handleSubmit(e){
         e.preventDefault()
         const newIngredient={
-            name: name,
-            calories: calories,
-            picture: picture
+            name: formData.name,
+            image: formData.image
         }
-        fetch("http://localhost:9292/ingredients", {
+        fetch("/ingredients", {
             method:"POST",
             headers:{
               "content-Type": "application/json",
             }, 
             body: JSON.stringify(newIngredient),
-          })
-          setCalories(0)
-          setPicture('')
-          setName('')
-          setForm(!form)
-          alert("You have added an ingredient to the database!")
-          //window.location.href=window.location.href
+          }).then((r) => {
+            if (r.ok) {
+                r.json()
+                .then((ingr) => {
+                    setAllIngredients([...allIngredients, ingr])
+                    setDisplay('no')
+                    alert(`Added ${ingr.name} to Database`)
+                })
+            } else {
+                r.json().then((err) => setErrors(err.errors))
+            }
+        })
+
         }
 
     return(
@@ -31,20 +48,17 @@ function IngredientForm() {
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Name:</label>
-                <input type="text" name="name" value={name} onChange={((e) => setName(e.target.value))} />
+                <input type="text" name="name" value={formData.name} onChange={handleChange} />
             </div>
             <div>
-                <label>Calories per Gram:</label>
-                <input type="integer" name="calories" value={calories} onChange={((e) => setCalories(e.target.value))} />
-            </div>
-            <div>
-                <label>Picture:</label>
-                <input type="text" name="picture" value={picture} onChange={((e) => setPicture(e.target.value))} />
+                <label>Image:</label>
+                <input type="integer" name="image" value={formData.image} onChange={handleChange} />
             </div>
             <div>
                 <input className='button' type="submit" />
             </div>
         </form>
+        {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
     </div>
     )
 

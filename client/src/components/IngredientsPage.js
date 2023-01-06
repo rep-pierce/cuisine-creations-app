@@ -2,9 +2,11 @@
 import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 import AllIngredientsCard from "./AllIngredientsCard";
+import IngredientForm from "./IngredientForm"
 
 function IngredientsPage({rID, setRID}){
     const [allIngredients, setAllIngredients] = useState([])
+    const [display, setDisplay] = useState('no')
     const history = useHistory()
 
     useEffect(() => {
@@ -19,9 +21,17 @@ function IngredientsPage({rID, setRID}){
     function handleNav(){
         history.push('/steps')
     }
+    function handleDisp(){
+        if (display === 'no'){
+            setDisplay('yes')
+        }else {
+            setDisplay('no')
+        }
+    }
     return(
         <div>
-            <button className='button'>Add Ingredient to the Database</button>
+            <button className='button' onClick={handleDisp}>Add Ingredient to the Database</button>
+            {display === 'yes' ? <IngredientForm allIngredients={allIngredients} setAllIngredients={setAllIngredients} setDisplay={setDisplay} /> : null}
             {listIngredients()}
             <button className="button" onClick={handleNav}>Add Steps</button>
         </div>
