@@ -1,6 +1,8 @@
 class StepsController < ApplicationController
+    skip_before_action :authorized, only: [:create]
+
     def create
-        steps = Step.create!(steps_params)
+        steps = Step.create!(steps_params[:_json])
         render json: steps, status: :created
     end
 
@@ -18,6 +20,6 @@ class StepsController < ApplicationController
 private 
 
     def steps_params
-        params.permit(:direction, :step_number)
+        params.permit(_json: [:step_number, :recipe_id, :direction])
     end
 end
