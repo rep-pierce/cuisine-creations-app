@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import RecipeCard from "./RecipeCard"
 import StarRating from "./StarRating";
 
 
-function RecipePage({recipes, setRecipes, currentUser}) {
+
+function RecipePage({recipes, setRecipes, currentUser, rID, setRID}) {
    
     
     useEffect(()=> {
@@ -13,7 +14,7 @@ function RecipePage({recipes, setRecipes, currentUser}) {
     }, [])
 
     function createRecipesCards(){
-        return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe}/>)
+        return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} rID={rID} setRID={setRID}/>)
     }
 
   return (

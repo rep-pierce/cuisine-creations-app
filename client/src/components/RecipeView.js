@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StepCard from "./StepCard";
+import IngredientCard from "./IngredientCard";
 import { useParams, useHistory } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 
@@ -21,6 +22,9 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 	if (!recipe || !currentUser) {
 		return <div>Loading...</div>;
 	}
+	function renderIng(){
+		return recipe.ingredients_with_amount.map((ingredient) => <IngredientCard key={Math.random()*100000} ingredient={ingredient}/>)
+	  }
 
 	function renderSteps() {
 		// debugger
@@ -48,6 +52,8 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 		<div>
 			<h1>{recipe.name}</h1>
 			<img src={recipe.image} alt={recipe.name} />
+			<h3>Ingredients:</h3>
+			{renderIng()}
 			{renderSteps()}
 			{currentUser.id === recipe.user.id ? (
 				<button onClick={deleteRecipe}>Delete Recipe</button>

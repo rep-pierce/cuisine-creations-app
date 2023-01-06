@@ -14,10 +14,12 @@ import UserFormStyle from "./styled-components/UserPageStyle";
 import RecipeFormStyle from "./styled-components/RecipeFormStyle";
 import RecipeForm from "./components/RecipeForm";
 import RecipeViewStyle from "./styled-components/RecipeViewStyle";
+import IngredientsPage from "./components/IngredientsPage";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [recipes, setRecipes] = useState([]);
+	const [rID, setRID] = useState(null)
 
 	useEffect(() => {
 		fetch("/auth").then((r) => {
@@ -42,7 +44,7 @@ function App() {
 				<Switch>
 					<Route path="/recipeform">
 						<RecipeFormStyle />
-						<RecipeForm currentUser={currentUser} recipes={recipes} setRecipes={setRecipes} />
+						<RecipeForm currentUser={currentUser} recipes={recipes} setRecipes={setRecipes} rID={rID} setRID={setRID}/>
 					</Route>
 					<Route path="/userpage">
 						<UserFormStyle />
@@ -64,6 +66,9 @@ function App() {
 						<FavoriteStyle />
 						<Favorites currentUser={currentUser} />
 					</Route>
+					<Route path="/ingredientslist">
+						<IngredientsPage rID={rID} setRID={setRID} />
+					</Route>
 					<Route path="/recipe/:id">
 						<RecipeViewStyle/>
 						<RecipeView recipes={recipes} setRecipes={setRecipes} currentUser={currentUser} />
@@ -74,6 +79,8 @@ function App() {
 							recipes={recipes}
 							setRecipes={setRecipes}
 							currentUser={currentUser}
+							rID={rID}
+							setRID={setRID}
 						/>
 					</Route>
 				</Switch>

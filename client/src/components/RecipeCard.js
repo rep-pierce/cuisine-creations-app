@@ -2,9 +2,10 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import AverageStarRating from "./AverageStarRating";
 
-function RecipeCard({ recipe, currentUser }) {
+function RecipeCard({ recipe, currentUser , setRID}) {
 	const history = useHistory();
 	function handleNav() {
+    setRID(recipe.id)
 		history.push(`/recipe/${recipe.id}`);
 	}
 	return (
