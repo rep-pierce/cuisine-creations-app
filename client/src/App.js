@@ -15,6 +15,7 @@ import RecipeFormStyle from "./styled-components/RecipeFormStyle";
 import RecipeForm from "./components/RecipeForm";
 import RecipeViewStyle from "./styled-components/RecipeViewStyle";
 import IngredientsPage from "./components/IngredientsPage";
+import IngredientPageStyle from "./styled-components/IngredientPageStyle";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -67,6 +68,7 @@ function App() {
 						<Favorites currentUser={currentUser} />
 					</Route>
 					<Route path="/ingredientslist">
+						<IngredientPageStyle />
 						<IngredientsPage rID={rID} setRID={setRID} />
 					</Route>
 					<Route path="/recipe/:id">

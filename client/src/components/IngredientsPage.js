@@ -20,9 +20,9 @@ function IngredientsPage({rID, setRID}){
         history.push('/')
     }
     return(
-        <div>
+        <div >
             <button className='button'>Add Ingredient to the Database</button>
-            {listIngredients()}
+           <div className="ingredient-parent">{listIngredients()}</div> 
             <button className="button" onClick={handleHome}>Add Steps</button>
         </div>
     )
