@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function RecipeForm({ currentUser, recipes, setRecipes }) {
+function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 	const [errors, setErrors] = useState([]);
 	const history = useHistory();
 	const [formData, setFormData] = useState({
@@ -39,8 +39,11 @@ function RecipeForm({ currentUser, recipes, setRecipes }) {
 		}).then((r) => {
 			if (r.ok) {
 				r.json()
-					.then((recipe) => setRecipes([...recipes, recipe]))
-					.then(history.push("/"));
+					.then((recipe) => {
+						setRID(recipe.id)
+						setRecipes([...recipes, recipe])
+					})
+					.then(history.push("/ingredientslist"));
 			} else {
 				r.json().then((err) => setErrors(err.errors));
 			}
@@ -102,9 +105,10 @@ function RecipeForm({ currentUser, recipes, setRecipes }) {
 					</div>
 
 					<div>
-						<input className="login-button" type="submit" />
+						<button className="login-button" type="submit">Add Ingredients</button>
 					</div>
 				</form>
+				{!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
 			</div>
 		</div>
 	);
