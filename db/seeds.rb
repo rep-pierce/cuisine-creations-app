@@ -27,7 +27,7 @@ User.create(name: "Bryan", age: 28, username: "Bryan", password: "789", image: F
 
 10.times { Ingredient.create(name: Faker::Food.ingredient, image: Faker::LoremFlickr.image(search_terms: ["food", "ingredients"]))}
 
-10.times { Review.create(user: User.all.sample, recipe: Recipe.all.sample, rating: rand(1..5), review: "test" )} 
+50.times { Review.create(user: User.all.sample, recipe: Recipe.all.sample, rating: rand(1..5), review: "test" )} 
 
 10.times { Step.create(recipe: Recipe.all.sample, direction: Faker::Food.description, step_number: rand(1..10))}
 
