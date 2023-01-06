@@ -54,6 +54,33 @@ const LoginStyle = createGlobalStyle`
   width: 400px;
   gap:20px;
 }
+.error-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: #d0021b;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.error::before {
+  content: '\u002A';
+  color: #d0021b;
+  margin-right: 8px;
+  align-self: flex-start;
+}
 
 .login-button:hover {
   background-color: #7BD5D5;

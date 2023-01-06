@@ -15,7 +15,7 @@ function ReviewCard({ review, rating, reviewFor, id }) {
 			<p>{review}</p>
       <StarRating rRating={rating} />
       <br/>
-			{!reviewFor ? null : <button onClick={handleDelete}> Delete </button>}
+			{!reviewFor ? null : <button className="delete-button" onClick={handleDelete}> Delete </button>}
 		</div>
 	);
 }

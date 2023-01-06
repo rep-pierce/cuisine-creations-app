@@ -79,6 +79,17 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 	return (
 		<div className="New-user-card">
 			<br />
+			<div className="error-wrapper">
+				<div className="errors">
+					{!errors
+						? null
+						: errors.map((error) => (
+								<p className="error" key={error}>
+									{error}
+								</p>
+						  ))}
+				</div>
+			</div>
 			<form className="login-form" onSubmit={handleUpdate}>
 				<div>
 					<label className="login-label" htmlFor="name">
@@ -133,17 +144,16 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 					<input className="login-button" type="submit" />
 				</div>
 			</form>
-			{!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
 			<br />
 			<div className="parent-div">
-			<div className="container" >
-				<div>{reviewMapped()}</div>
+				<div className="container">
+					<div>{reviewMapped()}</div>
+				</div>
+				<div className="container">
+					<div>{recipeMapped()}</div>
+				</div>
 			</div>
-			<div className="container" >
-				<div>{recipeMapped()}</div>
-			</div>
-			</div>
-			</div>
+		</div>
 	);
 }
 

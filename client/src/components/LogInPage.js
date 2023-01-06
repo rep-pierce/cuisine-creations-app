@@ -79,9 +79,13 @@ function LogInPage({ currentUser, setCurrentUser }) {
 			<button className="button" onClick={handleLog}>
 				Login to Your Account
 			</button>
+			<div className="error-wrapper" >
+			<div className="errors">
+    {!errors ? null : errors.map((error) => <p className="error" key={error}>{error}</p>)}
+				</div>
+				</div>
 			<br />
 			{handleRender(display)}
-			{!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
 		</div>
 	);
 }

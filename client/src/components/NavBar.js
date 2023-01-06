@@ -15,7 +15,7 @@ function NavBar({ currentUser, setCurrentUser }) {
 
 	return (
 		<div className="navbar">
-			{!currentUser ? null : `Welcome ${currentUser.name}`}
+			{!currentUser ? null : <h4 className="font-effect-3d-float">Welcome {currentUser.name} </h4>}
 			<NavLink className="navbar-item" exact to="/">
 				Home
 			</NavLink>

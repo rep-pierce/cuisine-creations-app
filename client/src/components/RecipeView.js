@@ -3,6 +3,7 @@ import StepCard from "./StepCard";
 import IngredientCard from "./IngredientCard";
 import { useParams, useHistory } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
+import RecipeReview from "./RecipeReview";
 
 function RecipeView({ recipes, setRecipes, currentUser }) {
 	const [recipe, setRecipe] = useState(null);
@@ -22,9 +23,11 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 	if (!recipe || !currentUser) {
 		return <div>Loading...</div>;
 	}
-	function renderIng(){
-		return recipe.ingredients_with_amount.map((ingredient) => <IngredientCard key={Math.random()*100000} ingredient={ingredient}/>)
-	  }
+	function renderIng() {
+		return recipe.ingredients_with_amount.map((ingredient) => (
+			<IngredientCard key={Math.random() * 100000} ingredient={ingredient} />
+		));
+	}
 
 	function renderSteps() {
 		// debugger
@@ -49,16 +52,36 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 	}
 
 	return (
-		<div>
-			<h1>{recipe.name}</h1>
-			<img src={recipe.image} alt={recipe.name} />
-			<h3>Ingredients:</h3>
-			{renderIng()}
-			{renderSteps()}
+        <div className="recipe-view">
+            <RecipeReview />
+			<div className="recipe-header">
+				<h1>{recipe.name}</h1>
+			</div>
+			<div className="recipe-content">
+                <img src={recipe.image} alt={recipe.name} />
+                <br/>
+				<div className="recipe-details">
+					<div className="ingredients-steps">
+						<div className="scrollable">
+							<h4>Ingredients :</h4>
+							{renderIng()}
+						</div>
+						<div className="scrollable">
+							<h4>Steps :</h4>
+							{renderSteps()}
+						</div>
+					</div>
+				</div>
+            </div>
+            <br/>
+			<div className="reviews">
+				<h4>Reviews :</h4>
+				{handleReviews()}
+            </div>
+            <br/>
 			{currentUser.id === recipe.user.id ? (
-				<button onClick={deleteRecipe}>Delete Recipe</button>
+				<button className="delete-button" onClick={deleteRecipe}>Delete Recipe</button>
 			) : null}
-			{handleReviews()}
 		</div>
 	);
 }

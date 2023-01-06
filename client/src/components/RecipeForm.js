@@ -44,16 +44,21 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 						setRecipes([...recipes, recipe])
 					})
 					.then(history.push("/ingredientslist"));
-			} else {
-				r.json().then((err) => setErrors(err.errors));
-			}
-		});
-	}
-
-	return (
-		<div>
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
+    }
+    
+    return (
+      <div>
 			<div className="New-user-card">
 				<br />
+        <div className="error-wrapper" >
+			<div className="errors">
+    {!errors ? null : errors.map((error) => <p className="error" key={error}>{error}</p>)}
+				</div>
+				</div>
 				<form className="login-form" onSubmit={handleSubmit}>
 					<div>
 						<label className="login-label" htmlFor="name">
@@ -108,7 +113,6 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 						<button className="login-button" type="submit">Add Ingredients</button>
 					</div>
 				</form>
-				{!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
 			</div>
 		</div>
 	);

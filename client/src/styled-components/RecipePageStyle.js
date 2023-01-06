@@ -10,7 +10,7 @@ const RecipePageStyle = createGlobalStyle`
   box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
   text-align: center;
   margin: 60px;
-  font-family: proza libre;
+  font-family: playfair display;
   padding: 0;
 }
 
@@ -31,7 +31,7 @@ p{
   display: flex;
   font-family: Pacifico;
   justify-content: center;
-  font-size: 50px;
+  font-size: 60px;
   /* color: #117777; */
   background: linear-gradient( #8B0000, #FFD700);
   -webkit-background-clip: text;

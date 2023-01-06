@@ -39,6 +39,11 @@ body{
   color: #cccccc; /* Change the color of the links on hover */
 }
 
+.font-effect-3d-float{
+  color: black
+
+}
+
 
 
 button {
