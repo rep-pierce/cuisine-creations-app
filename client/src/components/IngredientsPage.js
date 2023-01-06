@@ -29,10 +29,10 @@ function IngredientsPage({rID, setRID}){
         }
     }
     return(
-        <div>
+        <div >
             <button className='button' onClick={handleDisp}>Add Ingredient to the Database</button>
             {display === 'yes' ? <IngredientForm allIngredients={allIngredients} setAllIngredients={setAllIngredients} setDisplay={setDisplay} /> : null}
-            {listIngredients()}
+           <div className="ingredient-parent">{listIngredients()}</div> 
             <button className="button" onClick={handleNav}>Add Steps</button>
         </div>
     )
