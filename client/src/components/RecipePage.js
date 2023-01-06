@@ -14,7 +14,7 @@ function RecipePage({recipes, setRecipes, currentUser, rID, setRID}) {
     }, [])
 
     function createRecipesCards(){
-        return recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} rID={rID} setRID={setRID}/>)
+        return recipes.map(recipe => <RecipeCard key={Math.random()*1000000} recipe={recipe} rID={rID} setRID={setRID}/>)
     }
 
   return (

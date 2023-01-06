@@ -42,7 +42,7 @@ function StepPage({rID, setRID}) {
             {[...Array(formCount)].map((x, i) => (
                 <StepForm key={Math.random()*1000000}steps={steps} setSteps={setSteps} rID={rID} />
             ))}
-            {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
+            {!errors ? null : errors.map((error) => <p key={Math.random()*1000000}>{error}</p>)}
             <button onClick={handleSubmit}>Submit</button>
         </div>
     )

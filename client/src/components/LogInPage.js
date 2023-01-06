@@ -81,7 +81,7 @@ function LogInPage({ currentUser, setCurrentUser }) {
 			</button>
 			<div className="error-wrapper" >
 			<div className="errors">
-    {!errors ? null : errors.map((error) => <p className="error" key={error}>{error}</p>)}
+    {!errors ? null : errors.map((error) => <p className="error" key={Math.random()*1000000}>{error}</p>)}
 				</div>
 				</div>
 			<br />

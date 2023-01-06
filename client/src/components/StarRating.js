@@ -8,7 +8,7 @@ const StarRating = ({ rRating }) => {
 			{[...Array(rRating)].map((index) => {
 				index += 1;
 				return (
-					<button type="button" key={index} className="on">
+					<button type="button" key={Math.random()*1000000} className="on">
 						<span className="star">&#9733;</span>
 					</button>
 				);

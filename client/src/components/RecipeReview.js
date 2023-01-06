@@ -54,7 +54,7 @@ function RecipeReview({history, rID, currentUser}) {
 				<button className="button">Submit</button>
 			</form>
 			<div>
-			{!errors ? null : errors.map((error) => <p className="error" key={error}>{error}</p>)}
+			{!errors ? null : errors.map((error) => <p className="error" key={Math.random()*1000000}>{error}</p>)}
 			</div>
 		</div>
 	);

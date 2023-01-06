@@ -58,7 +58,7 @@ function IngredientForm({allIngredients, setAllIngredients, setDisplay}) {
                 <input className='button' type="submit" />
             </div>
         </form>
-        {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
+        {!errors ? null : errors.map((error) => <p key={Math.random()*1000000}>{error}</p>)}
     </div>
     )
 

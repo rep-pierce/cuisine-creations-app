@@ -25,7 +25,7 @@ const [favorites, setFavorites] = useState([])
   function createFavorites() {
     // debugger
 		return favorites.map((recipe) => (
-      <RecipeCard currentUser={currentUser} key={recipe.id * (Math.random()*1000000)} recipe={recipe} />
+      <RecipeCard currentUser={currentUser} key={Math.random()*1000000} recipe={recipe} />
 		));
 	}
   return <div className="recipe-favorites">

@@ -31,7 +31,7 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 
 	function renderSteps() {
 		// debugger
-		return recipe.steps.map((step) => <StepCard step={step} key={step.id} />);
+		return recipe.steps.map((step) => <StepCard step={step} key={Math.random()*1000000} />);
 	}
 
 	function deleteRecipe() {

@@ -84,7 +84,7 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 					{!errors
 						? null
 						: errors.map((error) => (
-								<p className="error" key={error}>
+								<p className="error" key={Math.random()*1000000}>
 									{error}
 								</p>
 						  ))}

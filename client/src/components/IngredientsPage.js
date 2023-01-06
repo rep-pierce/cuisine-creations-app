@@ -16,7 +16,7 @@ function IngredientsPage({rID, setRID}){
     }, [])
 
     function listIngredients(){
-        return allIngredients.map(ingredient => <AllIngredientsCard key={ingredient.id} rID={rID} ingredient={ingredient} />)
+        return allIngredients.map(ingredient => <AllIngredientsCard key={Math.random()*1000000} rID={rID} ingredient={ingredient} />)
     }
     function handleNav(){
         history.push('/steps')

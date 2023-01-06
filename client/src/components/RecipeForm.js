@@ -56,7 +56,7 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 				<br />
         <div className="error-wrapper" >
 			<div className="errors">
-    {!errors ? null : errors.map((error) => <p className="error" key={error}>{error}</p>)}
+    {!errors ? null : errors.map((error) => <p className="error" key={Math.random()*1000000}>{error}</p>)}
 				</div>
 				</div>
 				<form className="login-form" onSubmit={handleSubmit}>
