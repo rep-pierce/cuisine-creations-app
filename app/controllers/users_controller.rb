@@ -21,9 +21,14 @@ def create
   render json: user, status: :created
 end
 
+def update
+  user = current_user.update!(user_params)
+  render json: user, status: :accepted
+end  
+
 private
 
 def user_params
-  params.permit(:name, :age, :image, :username, :password, :password_confirmation)
+  params.permit(:name, :age, :username, :password, :password_confirmation,:image, :id)
 end
 end

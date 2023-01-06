@@ -7,7 +7,7 @@ has_many :reviews, dependent: :destroy
 has_many :reviewed_recipes, through: :reviews, source: :recipe
 
 validates :name, presence: true
-validates :age, presence: true
+validates :age, presence: true, numericality: true
 validates :username, presence: true, uniqueness: true
 
 end
