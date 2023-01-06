@@ -15,6 +15,7 @@ import RecipeFormStyle from "./styled-components/RecipeFormStyle";
 import RecipeForm from "./components/RecipeForm";
 import RecipeViewStyle from "./styled-components/RecipeViewStyle";
 import IngredientsPage from "./components/IngredientsPage";
+import StepPage from "./components/StepPage";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -68,6 +69,9 @@ function App() {
 					</Route>
 					<Route path="/ingredientslist">
 						<IngredientsPage rID={rID} setRID={setRID} />
+					</Route>
+					<Route path="/steps">
+						<StepPage rID={rID} setRID={setRID} />
 					</Route>
 					<Route path="/recipe/:id">
 						<RecipeViewStyle/>

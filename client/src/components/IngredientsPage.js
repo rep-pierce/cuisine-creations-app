@@ -16,14 +16,14 @@ function IngredientsPage({rID, setRID}){
     function listIngredients(){
         return allIngredients.map(ingredient => <AllIngredientsCard key={ingredient.id} rID={rID} ingredient={ingredient} />)
     }
-    function handleHome(){
-        history.push('/')
+    function handleNav(){
+        history.push('/steps')
     }
     return(
         <div>
             <button className='button'>Add Ingredient to the Database</button>
             {listIngredients()}
-            <button className="button" onClick={handleHome}>Add Steps</button>
+            <button className="button" onClick={handleNav}>Add Steps</button>
         </div>
     )
 }
