@@ -22,20 +22,23 @@ function StepForm({steps, setSteps, rID}) {
     }
 
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
+    
+      <div>
+          <br/>
+        <form className='recipe-form' onSubmit={handleSubmit}>
             <div>
-                <label>Step Number:</label>
-                <input type="integer" name="step_number" value={formData.step_number} onChange={handleChange} />
+                <label className='recipe-label'>Step Number:</label>
+                <input className='recipe-input' type="integer" name="step_number" value={formData.step_number} onChange={handleChange} />
             </div>
             <div>
-                <label>Step Direction:</label>
-                <input type="integer" name="direction" value={formData.direction} onChange={handleChange} />
+                <label className='recipe-label'>Step Direction:</label>
+                <input className='recipe-input' type="integer" name="direction" value={formData.direction} onChange={handleChange} />
             </div>
             <div>
                 <button className='button' type="submit">confirm</button>
             </div>
-        </form>
+          </form>
+          <br/>
     </div>
   )
 }

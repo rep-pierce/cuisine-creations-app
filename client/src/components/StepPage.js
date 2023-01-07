@@ -11,9 +11,9 @@ function StepPage({rID, setRID}) {
     const inCreation = true
     
     
-    function handleAdd(){
-        setFormCount(formCount + 1)
-    }
+    // function handleAdd(){
+    //     setFormCount(formCount + 1)
+    // }
     function handleDelete(e, num){
         setSteps(steps.filter(s => s.step_number !== num))
     }
@@ -36,8 +36,9 @@ function StepPage({rID, setRID}) {
         history.push('/')
     }
     return(
-        <div>
-            <button className='button' onClick={handleAdd}>Add New Step</button>
+        <div className="steps-container">
+            <br/>
+            <h3 className='step'>Add New Step</h3>
             {steps.length > 0? steps.map(step => <StepCard step={step} key={Math.random()*1000000} handleDelete={handleDelete} inCreation={inCreation} />) : null}
             {[...Array(formCount)].map((x, i) => (
                 <StepForm key={Math.random()*1000000}steps={steps} setSteps={setSteps} rID={rID} />
