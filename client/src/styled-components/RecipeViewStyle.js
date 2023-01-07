@@ -95,7 +95,6 @@ img {
 }
 
 .reviews {  
-  position: absolute;
   width: 44em;
   height: 26rem;
   background: #FFFFFF;
@@ -103,8 +102,6 @@ img {
   float: left;
   text-align: center;
   box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
-
-  bottom: -790px;
 }
 
 .reviews::-webkit-scrollbar {

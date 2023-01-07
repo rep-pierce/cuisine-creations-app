@@ -44,18 +44,18 @@ function IngredientForm({allIngredients, setAllIngredients, setDisplay}) {
         }
 
     return(
-        <div className='Ingredient-form-div'>
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Name:</label>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} />
+        <div >
+        <form className='ingredient-form' onSubmit={handleSubmit}>
+            <div >
+                <label className='ingredient-label'>Name:</label>
+                <input className='ingredient-input' type="text" name="name" value={formData.name} onChange={handleChange} />
             </div>
             <div>
-                <label>Image:</label>
-                <input type="integer" name="image" value={formData.image} onChange={handleChange} />
+                <label className='ingredient-label' >Image:</label>
+                <input className='ingredient-input' type="integer" name="image" value={formData.image} onChange={handleChange} />
             </div>
             <div>
-                <input className='button' type="submit" />
+                <input className='ingredient-button' type="submit" />
             </div>
         </form>
         {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}

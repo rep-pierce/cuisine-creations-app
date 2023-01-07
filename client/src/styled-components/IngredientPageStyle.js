@@ -2,6 +2,42 @@ import { createGlobalStyle } from "styled-components";
 
 const IngredientPageStyle = createGlobalStyle`
 
+.ingredient-button{
+  background-color: tomato;
+  border: 1px solid #dbdbdb; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  font-size: 14px; 
+  padding: 8px; 
+  width: 100%; 
+}
+.ingredient-form {
+  background-color: #ffffff; 
+  border: 1px solid #dbdbdb; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  display: flex; 
+  flex-direction: column;
+  padding: 20px; 
+  margin: 0 auto; 
+  max-width: 400px;
+  gap: 25px; 
+}
+.ingredient-label {
+  font-size: 14px; 
+  font-weight: 600; 
+  margin-bottom: 8px;
+}
+
+.ingredient-input {
+  border: 1px solid #dbdbdb; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  font-size: 14px; 
+  padding: 8px; 
+  width: 100%; 
+}
+
 .ingredient-parent{
   display: flex;
   flex-wrap: wrap;
