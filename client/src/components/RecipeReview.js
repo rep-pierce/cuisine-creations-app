@@ -43,7 +43,8 @@ function RecipeReview({history, rID, currentUser}) {
 					value={review}
 				></textarea>
 				<br />
-				<select className="rating-input"onChange={(e) => setRating(e.target.value)} value={rating}>
+					<label> <span className="star">&#9733;</span> Rating : </label>
+				<select className="rating-input" onChange={(e) => setRating(e.target.value)} value={rating}>
 					<option value="0">0</option>
 					<option value="1">1</option>
 					<option value="2">2</option>

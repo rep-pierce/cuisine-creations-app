@@ -157,6 +157,9 @@ img {
   display: none;
 }
 
+.star{
+  color: gold;
+}
 
 `;
 
