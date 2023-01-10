@@ -8,7 +8,6 @@ class ApplicationController < ActionController::API
     User.find_by(id: session[:user_id])
   end
   
-
   private
 
   def authorized
