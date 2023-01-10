@@ -9,7 +9,7 @@ function LogInPage({ currentUser, setCurrentUser }) {
 		age: "",
 		username: "",
 		password: "",
-		passwordConfirmation: "",
+		passwordConfirmation: ""
 	});
 	const history = useHistory();
 	const [errors, setErrors] = useState([]);
@@ -79,11 +79,17 @@ function LogInPage({ currentUser, setCurrentUser }) {
 			<button className="button" onClick={handleLog}>
 				Login to Your Account
 			</button>
-			<div className="error-wrapper" >
-			<div className="errors">
-    {!errors ? null : errors.map((error) => <p className="error" key={Math.random()*1000000}>{error}</p>)}
+			<div className="error-wrapper">
+				<div className="errors">
+					{!errors
+						? null
+						: errors.map((error) => (
+								<p className="error" key={Math.random() * 1000000}>
+									{error}
+								</p>
+						  ))}
 				</div>
-				</div>
+			</div>
 			<br />
 			{handleRender(display)}
 		</div>

@@ -9,7 +9,7 @@ function RecipeCard({ recipe, currentUser , setRID}) {
 		history.push(`/recipe/${recipe.id}`);
 	}
 	return (
-		<div className="recipes">
+		<div className="recipes-f">
 			<div onClick={handleNav}>
 				<img src={recipe.image} alt={recipe.name} />
 				<p> Tag: {recipe.tags}</p>

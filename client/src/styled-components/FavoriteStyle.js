@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const FavoriteStyle = createGlobalStyle`
 
-.recipes{
+.recipes-f{
   background-color: #FFFFFF;
   width: 300px;
   height: 100%;
