@@ -7,6 +7,7 @@ function LoginForm({
 	username,
 	password,
 	handleChange,
+	setFavs
 }) {
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -24,7 +25,10 @@ function LoginForm({
 		}).then((r) => {
 			if (r.ok) {
 				r.json()
-					.then((user) => setCurrentUser(user))
+					.then((user) => {
+						setFavs(user.favorite_recipes)
+						setCurrentUser(user)
+					})
 					.then(history.push("/"));
 			} else {
 				r.json().then((err) => setErrors(err.errors));

@@ -4,7 +4,7 @@ import RecipeCard from "./RecipeCard"
 
 
 
-function RecipePage({recipes, setRecipes, currentUser, rID, setRID}) {
+function RecipePage({recipes, setRecipes, rID, setRID, favs, setFavs, currentUser}) {
    
     
     useEffect(()=> {
@@ -14,7 +14,7 @@ function RecipePage({recipes, setRecipes, currentUser, rID, setRID}) {
     }, [])
 
     function createRecipesCards(){
-        return recipes.map(recipe => <RecipeCard key={Math.random()*1000000} recipe={recipe} rID={rID} setRID={setRID}/>)
+        return recipes.map(recipe => <RecipeCard key={Math.random()*1000000} favs={favs} setFavs={setFavs} recipe={recipe} rID={rID} setRID={setRID} currentUser={currentUser}/>)
     }
 
   return (

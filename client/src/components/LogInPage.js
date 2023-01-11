@@ -3,7 +3,7 @@ import LoginForm from "./LoginForm";
 import NewUserForm from "./NewUserForm";
 import { useHistory } from "react-router-dom";
 
-function LogInPage({ currentUser, setCurrentUser }) {
+function LogInPage({ currentUser, setCurrentUser, setFavs }) {
 	const [formData, setFormData] = useState({
 		name: "",
 		age: "",
@@ -55,6 +55,7 @@ function LogInPage({ currentUser, setCurrentUser }) {
 					setErrors={setErrors}
 					setCurrentUser={setCurrentUser}
 					history={history}
+					setFavs={setFavs}
 				/>
 			);
 		} else if (display === "new") {

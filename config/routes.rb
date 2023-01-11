@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :steps, only: [:create, :update, :destroy]
   resources :reviews, only: [:update, :destroy, :create]
   resources :ingredients, only:[:index, :create, :show]
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy, :show]
   resources :recipes, only: [:index, :show, :update, :create, :destroy]
   resources :users, only:[:index, :create, :show, :destroy, :update]
 

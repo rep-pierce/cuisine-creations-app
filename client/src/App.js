@@ -23,11 +23,15 @@ function App() {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [recipes, setRecipes] = useState([]);
 	const [rID, setRID] = useState(null)
+	const [favs, setFavs] = useState()
 
 	useEffect(() => {
 		fetch("/auth").then((r) => {
 			if (r.ok) {
-				r.json().then((user) => setCurrentUser(user));
+				r.json().then((user) => {
+					setFavs(user.favorite_recipes)
+					setCurrentUser(user)
+				});
 			}
 		});
 	}, []);
@@ -63,11 +67,12 @@ function App() {
 						<LogInPage
 							currentUser={currentUser}
 							setCurrentUser={setCurrentUser}
+							setFavs={setFavs}
 						/>
 					</Route>
 					<Route path="/favorites">
 						<FavoriteStyle />
-						<Favorites currentUser={currentUser} />
+						<Favorites currentUser={currentUser} favs={favs} setFavs={setFavs} rID={rID} setRID={setRID} />
 					</Route>
 					<Route path="/ingredientslist">
 						<IngredientPageStyle />
@@ -89,6 +94,8 @@ function App() {
 							currentUser={currentUser}
 							rID={rID}
 							setRID={setRID}
+							favs={favs}
+							setFavs={setFavs}
 						/>
 					</Route>
 				</Switch>

@@ -20,7 +20,7 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 		fetchData();
 	}, [id]);
 
-	if (!recipe || !currentUser) {
+	if (!recipe) {
 		return <div>Loading...</div>;
 	}
 	function renderIng() {
@@ -39,6 +39,10 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 			method: "DELETE",
 		});
 		history.push("/");
+	}
+
+	function checkIfOwned(){
+		return currentUser.id === recipe.user.id ? <button className="delete-button" onClick={deleteRecipe}>Delete Recipe</button> : null
 	}
 
 	function handleReviews() {
@@ -73,15 +77,13 @@ function RecipeView({ recipes, setRecipes, currentUser }) {
 				</div>
             </div>
             <br/>
-            <RecipeReview history={history} rID={recipe.id} currentUser={currentUser} />
+            {!currentUser ? null : <RecipeReview history={history} rID={recipe.id} currentUser={currentUser} />}
 			<div className="reviews">
 				<h4>Reviews :</h4>
 				{handleReviews()}
             </div>
             <br/>
-			{currentUser.id === recipe.user.id ? (
-				<button className="delete-button" onClick={deleteRecipe}>Delete Recipe</button>
-			) : null}
+			{!currentUser ? null : checkIfOwned()}
 		</div>
 	);
 }

@@ -9,7 +9,7 @@ function NavBar({ currentUser, setCurrentUser }) {
 		fetch("/logout", {
 			method: "DELETE",
 		})
-			.then(() => setCurrentUser(""))
+			.then(() => setCurrentUser(null))
 			.then(history.push('/'));
 	}
 

@@ -4,33 +4,22 @@ import ConfettiDrop from "./Confetti";
 
 
 
-function Favorites({ currentUser }) {
-const [favorites, setFavorites] = useState([])
-  
+function Favorites({ currentUser, favs, setFavs, rID, setRID }) {
 
-  useEffect(() => {
-    const favoriteData = async () => {
-      const user = await currentUser
-      const favorites = await user.favorite_recipes
-      setFavorites(favorites)
-    }
-
-    favoriteData()
-   }, [currentUser])
-  
-  if (!favorites || !currentUser) {
-    return <div>Loading...</div>
-  }
+  if (!currentUser) {
+		return <div>Loading...</div>;
+	}
 
   function createFavorites() {
-    // debugger
-		return favorites.map((recipe) => (
-      <RecipeCard currentUser={currentUser} key={Math.random()*1000000} recipe={recipe} />
+		return favs.map((recipe) => (
+      <RecipeCard currentUser={currentUser} key={Math.random()*1000000} rID={rID} setRID={setRID} recipe={recipe} favs={favs} setFavs={setFavs} />
 		));
 	}
-  return <div className="recipe-favorites">
+  return (
+  <div className="recipe-favorites">
     <ConfettiDrop/>
-    {createFavorites()}</div>;
-}
+    {createFavorites()}
+  </div>
+)}
 
 export default Favorites;
