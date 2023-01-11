@@ -2,7 +2,16 @@ class FavoritesController < ApplicationController
 
     def create
         favorite = Favorite.create!(fav_params)
-        render json: favorite.recipe
+        recipe = {
+            id: favorite.recipe.id,
+            name: favorite.recipe.name,
+            image: favorite.recipe.image,
+            recipe_time: favorite.recipe.recipe_time,
+            tags: favorite.recipe.tags,
+            average_rating: favorite.recipe.average_rating,
+            favorite_index: favorite.id
+        }
+        render json: recipe
     end
 
     def destroy
