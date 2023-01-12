@@ -40,7 +40,7 @@ function RecipeCard({ recipe, setRID, favs, setFavs, currentUser}) {
 	return (
 		<div className="recipes">
 			<div onClick={handleNav}>
-				<img src={recipe.image} alt={recipe.name} />
+				<img src={recipe.image} alt={recipe.name} style={{width: 300, height: 300}}/>
 				<p> Tag: {recipe.tags}</p>
 				<h1>{recipe.name}</h1>
 				<h2><span>&#9200;</span> {recipe.recipe_time} min </h2>

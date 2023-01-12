@@ -100,13 +100,19 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 						<label className="login-label" htmlFor="password">
 							Tags:
 						</label>
-						<input
-							className="login-input"
-							type="text"
-							name="tags"
-							value={formData.tags}
-							onChange={(e) => handleChange(e)}
-						/>
+						<select name="tags" onChange={(e) => handleChange(e)}>
+							<option value="asian">asian</option>
+							<option value="american">american</option>
+							<option value="italian">italian</option>
+							<option value="vegan">vegan</option>
+							<option value="vegetarian">vegetarian</option>
+							<option value="mediterranean">mediterranean</option>
+							<option value="quick/easy">quick/easy</option>
+							<option value="indian">indian</option>
+							<option value="mexican">mexican</option>
+							<option value="dessert">dessert</option>
+						</select>
+
 					</div>
 
 					<div>
