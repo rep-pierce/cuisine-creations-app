@@ -34,7 +34,7 @@ function RecipePage({ recipes, setRecipes, currentUser, rID, setRID }) {
 							exit={{ y: 50 }}
 							transition={{ delay: index * 0.1, duration: 0.5 }}
 						>
-							{/* {card} */}
+							{card}
 						</motion.div>
 					))}
 				</div>
