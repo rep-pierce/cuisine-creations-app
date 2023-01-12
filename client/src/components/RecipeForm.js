@@ -41,7 +41,7 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 				r.json()
 					.then((recipe) => {
 						setRID(recipe.id)
-						setRecipes([...recipes, recipe])
+						setRecipes([recipe, ...recipes])
 					})
 					.then(history.push("/ingredientslist"));
         } else {
