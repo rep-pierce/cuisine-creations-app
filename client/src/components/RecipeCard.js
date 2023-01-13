@@ -35,7 +35,7 @@ function RecipeCard({ recipe, setRID, favs, setFavs, currentUser}) {
 	}
 	function handleFavs(){
 		const hasInFavs = favs.some(fav => fav.id === recipe.id)
-		return hasInFavs ? handleRemove() : <button onClick={handleAddFav}>Add To Favorites</button>
+		return hasInFavs ? handleRemove() : <button className="button" onClick={handleAddFav}>Add To Favorites</button>
 	}
 	return (
 		<div className="recipes">

@@ -14,35 +14,35 @@ function NavBar({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div className="navbar">
+		<div className="nav-bar">
 			{!currentUser ? null : <h4 className="font-effect-3d-float">Welcome {currentUser.name} </h4>}
-			<NavLink className="navbar-item" exact to="/">
+			<NavLink className="nav-link" exact to="/">
 				Home
 			</NavLink>
 			{!currentUser ? null : (
-				<NavLink className="navbar-item" to="/userpage">
+				<NavLink className="nav-link" to="/userpage">
 					User
 				</NavLink>
 			)}
 			{currentUser ? (
-				<NavLink className="navbar-item" to="/favorites">
+				<NavLink className="nav-link" to="/favorites">
 					{" "}
 					Favorites{" "}
 				</NavLink>
 			) : null}
 			{currentUser ? (
-				<NavLink className="navbar-item" to="/recipeform">
+				<NavLink className="nav-link" to="/recipeform">
 					{" "}
 					New Recipe{" "}
 				</NavLink>
 			) : null}
 			{!currentUser ? (
-				<NavLink className="navbar-item" to="/userlogin">
+				<NavLink className="nav-link" to="/userlogin">
 					{" "}
 					Log In{" "}
 				</NavLink>
 			) : (
-				<button className="navbar-item" onClick={handleLogOut}>
+				<button className="nav-link" onClick={handleLogOut}>
 					Log Out
 				</button>
 			)}

@@ -6,23 +6,76 @@ body{
   background-color: #FFFFE0
 }
 
+.nav-bar .nav-link {
+    margin: 10px 0;
+}
+
+.nav-link{
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  color: black;
+  font-family: playfair display;
+  font-size: 18px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FF6347;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    z-index: 1;
+    max-height: 40px;
+    font-size: 18px;
+    font-family: playball;
+}
+
+
+@media screen and (max-width: 768px) {
+    .nav-bar {
+        /* flex-direction: column; */
+    }
+    .nav-bar .nav-link {
+        margin: 10px 0;
+    }
+}
+
 
 .navbar {
+  flex-direction: column;
   background-color: #FF6347;
   font-weight: 500;
   color: black; 
-  display: flex; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 100%;
+  z-index: 1; 
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: center; 
-  height: 60px; 
-  gap: 50px;
+  flex-wrap:wrap;
+  height: 40px; 
+  gap: 30px;
   font-size: 28px;
-  font-family: playball
+  font-family: playball;
 }
 
 .navbar-item {
+  margin-left: 10px; /* Adjust as needed */
+  margin-right: 10px;
   background-color: transparent;
   border: none;
+  top: 0;
   outline: none;
   display: inline-block;
   padding: 12px;
@@ -44,6 +97,15 @@ body{
 
 }
 
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    .navbar .navbar-item {
+        margin: 10px 0;
+    }
+}
+
 
 
 button {
@@ -56,6 +118,6 @@ button {
   color: #ccc;
 }
 
-`
+`;
 
-export default NavBarStyle
+export default NavBarStyle;
