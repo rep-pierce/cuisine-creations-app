@@ -2,6 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 const UserPageStyle = createGlobalStyle`
 
+
+
+.new-user-card{
+  margin-top: 30px;
+}
 .login-form {
   background-color: #ffffff; 
   border: 1px solid #dbdbdb; 
@@ -50,6 +55,7 @@ const UserPageStyle = createGlobalStyle`
   justify-content: center;
   align-items: center;
   gap: 10%;
+  margin-top: 60px
 }
 .container {
 width: 22rem;
@@ -121,6 +127,11 @@ box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
   font-size: 14px;
   font-weight: 600;
   padding: 8px 12px;
+}
+
+.delete-button:hover{
+  color: tomato;
+
 }
 
 `;

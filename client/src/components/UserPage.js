@@ -77,19 +77,33 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 	}
 
 	return (
-		<div className="New-user-card">
+		<>
+			<div className="parent-div">
+				<div className="container">
+					<h2>Your Reviews:
+						</h2>
+						<div>{reviewMapped()}</div>
+				</div>
+				<div className="container">
+				<h2>Your Recipes:
+						</h2>
+					<div>{recipeMapped()}</div>
+				</div>
+			</div>
+		<div className="new-user-card">
 			<br />
 			<div className="error-wrapper">
 				<div className="errors">
 					{!errors
 						? null
 						: errors.map((error) => (
-								<p className="error" key={Math.random()*1000000}>
+							<p className="error" key={Math.random()*1000000}>
 									{error}
 								</p>
 						  ))}
 				</div>
-			</div>
+				<h3>Change Info</h3>
+				</div>
 			<form className="login-form" onSubmit={handleUpdate}>
 				<div>
 					<label className="login-label" htmlFor="name">
@@ -101,7 +115,7 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 						name="name"
 						value={formData.name}
 						onChange={(e) => handleChange(e)}
-					/>
+						/>
 				</div>
 				<div>
 					<label className="login-label" htmlFor="age">
@@ -113,7 +127,7 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 						name="age"
 						value={formData.age}
 						onChange={(e) => handleChange(e)}
-					/>
+						/>
 				</div>
 				<div>
 					<label className="login-label" htmlFor="username">
@@ -125,7 +139,7 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 						name="username"
 						value={formData.username}
 						onChange={(e) => handleChange(e)}
-					/>
+						/>
 				</div>
 				<div>
 					<label className="login-label" htmlFor="password">
@@ -145,15 +159,8 @@ function UserPage({ currentUser, setCurrentUser, recipes }) {
 				</div>
 			</form>
 			<br />
-			<div className="parent-div">
-				<div className="container">
-					<div>{reviewMapped()}</div>
-				</div>
-				<div className="container">
-					<div>{recipeMapped()}</div>
-				</div>
-			</div>
 		</div>
+						</>
 	);
 }
 

@@ -44,7 +44,12 @@ function IngredientForm({allIngredients, setAllIngredients, setDisplay}) {
         }
 
     return(
-        <div >
+        <div  >
+        	<div className="error-wrapper" >
+			<div className="errors">
+    {!errors ? null : errors.map((error) => <p className="error" key={Math.random()*1000000}>{error}</p>)}
+				</div>
+				</div>
         <form className='ingredient-form' onSubmit={handleSubmit}>
             <div >
                 <label className='ingredient-label'>Name:</label>
@@ -58,7 +63,6 @@ function IngredientForm({allIngredients, setAllIngredients, setDisplay}) {
                 <input className='ingredient-button' type="submit" />
             </div>
         </form>
-        {!errors ? null : errors.map((error) => <p key={Math.random()*1000000}>{error}</p>)}
     </div>
     )
 

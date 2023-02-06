@@ -22,7 +22,26 @@ const FavoriteStyle = createGlobalStyle`
   flex-wrap: wrap;
   justify-content: center;
 }
+.button{
+  font-family: playfair display;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color:  #FF6347;
+  font-size: 20px;
 
+  
+}
+
+.confetti {
+  max-height: 100%;
+	min-height: 100vh;
+}
+.button:hover{
+  color:  #FF7961;
+
+}
 .recipes:hover {
    border: 4px solid gold; 
 }

@@ -73,13 +73,12 @@ function LogInPage({ currentUser, setCurrentUser, setFavs }) {
 	return (
 		<div className="login-card">
 			<br />
-			<button className="button" onClick={handleNew}>
+		{	display === "login" ? <button className="button" onClick={handleNew}>
 				Create New User
-			</button>
-			<br />
+			</button> :
 			<button className="button" onClick={handleLog}>
 				Login to Your Account
-			</button>
+			</button>}
 			<div className="error-wrapper" >
 			<div className="errors">
     {!errors ? null : errors.map((error) => <p className="error" key={Math.random()*1000000}>{error}</p>)}

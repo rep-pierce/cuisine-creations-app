@@ -40,21 +40,18 @@ function AllIngredientsCard({ ingredient, rID }) {
 	return (
 		<div className="ingredient-card">
 			{" "}
-			{/* apply the "ingredient-card" class to the container element */}
 			<p>{ingredient.name}</p>
-			<img
+		{ display === "not selected" ?	<img
 				src={ingredient.image}
 				alt={ingredient.name}
 				className="ingredient-image"
-			/>{" "}
-			{/* apply the "ingredient-image" class to the image element */}
-			<button onClick={handleDisp}>
+			/> : null}{" "}
+			<button className="add-ing" onClick={handleDisp}>
 				{display === "not selected" ? "Add to Recipe" : "Cancel"}
 			</button>
 			{display === "not selected" ? null : (
 				<form onSubmit={handleSubmit} className="ingredient-form">
 					{" "}
-					{/* apply the "ingredient-form" class to the form element */}
 					<label className="amount-label" htmlFor="amount">
 						Amount:{" "}
 					</label>
@@ -64,7 +61,7 @@ function AllIngredientsCard({ ingredient, rID }) {
 						value={amount}
 						onChange={(e) => handleChange(e)}
 					/>
-					<button className="login-button" type="submit" value="Login">
+					<button className="submit" type="submit" value="Login">
 						Submit
 					</button>
 				</form>

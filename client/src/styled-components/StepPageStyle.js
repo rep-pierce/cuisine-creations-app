@@ -2,6 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 const StepPageStyle = createGlobalStyle`
 
+
+.steps-container{
+  margin-top: 20px;
+}
 .step{
   display: flex;
   justify-content: center;

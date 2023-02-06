@@ -17,12 +17,13 @@ body{
   color: black;
   font-family: playfair display;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .nav-bar {
     display: flex;
     justify-content: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     background-color: #FF6347;
     position: fixed;
@@ -38,58 +39,9 @@ body{
 }
 
 
-@media screen and (max-width: 768px) {
-    .nav-bar {
-        /* flex-direction: column; */
-    }
-    .nav-bar .nav-link {
-        margin: 10px 0;
-    }
-}
 
-
-.navbar {
-  flex-direction: column;
-  background-color: #FF6347;
-  font-weight: 500;
-  color: black; 
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  max-width: 100%;
-  z-index: 1; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap:wrap;
-  height: 40px; 
-  gap: 30px;
-  font-size: 28px;
-  font-family: playball;
-}
-
-.navbar-item {
-  margin-left: 10px; /* Adjust as needed */
-  margin-right: 10px;
-  background-color: transparent;
-  border: none;
-  top: 0;
-  outline: none;
-  display: inline-block;
-  padding: 12px;
-  text-decoration: none;
-  margin: 0 6px 6px;
-  color: black;
-  border-radius: 10px;
-  font-size: 20px;
-  font-family: playfair display;
-  font-weight: 600;
-}
-
-.navbar-item:hover {
-  color: #cccccc; /* Change the color of the links on hover */
+.nav-link:hover {
+  color: #cccccc;
 }
 
 .font-effect-3d-float{
@@ -105,7 +57,6 @@ body{
         margin: 10px 0;
     }
 }
-
 
 
 button {

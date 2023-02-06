@@ -15,7 +15,36 @@ const RecipePageStyle = createGlobalStyle`
 }
 
 p{
-  margin-right: 150px
+  margin-right: 150px;
+  font-weight: bold;
+}
+.bookmark{
+  font-family: playfair display;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  margin-left: 240px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color:  #FF6347;
+
+}
+.button{
+  font-family: playfair display;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  margin-left: 200px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color:  #FF6347;
+
+}
+
+.button:hover{
+  color:  #FF7961;
+
+
 }
 
 .recipe-page{

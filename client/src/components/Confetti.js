@@ -33,7 +33,7 @@ function ConfettiDrop() {
 			height={height}
 			recycle={false}
 			style={{ pointerEvents: "none" }}
-			numberOfPieces={party ? 400 : 0}
+			numberOfPieces={party ? 700 : 0}
 			colors={colorsConfetti}
 			onConfettiComplete={(confetti) => {
 				setParty(false);

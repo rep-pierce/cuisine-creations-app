@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 function StepForm({steps, setSteps, rID}) {
     const [formData, setFormData] = useState({
         recipe_id: rID,
-        step_number: 0,
+        step_number: 1,
         direction: ""
     })
 

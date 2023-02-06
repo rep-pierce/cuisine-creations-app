@@ -8,7 +8,7 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 		name: "",
 		image: "",
 		recipe_time: "",
-		tags: ""
+		tags: "asian",
 	});
 
 	const handleChange = (e) => {
@@ -40,24 +40,30 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 			if (r.ok) {
 				r.json()
 					.then((recipe) => {
-						setRID(recipe.id)
-						setRecipes([recipe, ...recipes])
+						setRID(recipe.id);
+						setRecipes([recipe, ...recipes]);
 					})
 					.then(history.push("/ingredientslist"));
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
-    }
-    
-    return (
-      <div>
-			<div className="New-user-card">
+			} else {
+				r.json().then((err) => setErrors(err.errors));
+			}
+		});
+	}
+
+	return (
+		<div>
+			<div className="new-recipe-card">
 				<br />
-        <div className="error-wrapper" >
-			<div className="errors">
-    {!errors ? null : errors.map((error) => <p className="error" key={Math.random()*1000000}>{error}</p>)}
-				</div>
+				<div className="error-wrapper">
+					<div className="errors">
+						{!errors
+							? null
+							: errors.map((error) => (
+									<p className="error" key={Math.random() * 1000000}>
+										{error}
+									</p>
+							  ))}
+					</div>
 				</div>
 				<form className="login-form" onSubmit={handleSubmit}>
 					<div>
@@ -99,7 +105,7 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 					<div>
 						<label className="login-label" htmlFor="password">
 							Tags:
-						</label>
+						</label>{" "}
 						<select name="tags" onChange={(e) => handleChange(e)}>
 							<option value="asian">asian</option>
 							<option value="american">american</option>
@@ -112,11 +118,12 @@ function RecipeForm({ currentUser, recipes, setRecipes, rID, setRID }) {
 							<option value="mexican">mexican</option>
 							<option value="dessert">dessert</option>
 						</select>
-
 					</div>
 
 					<div>
-						<button className="login-button" type="submit">Add Ingredients</button>
+						<button className="login-button" type="submit">
+							Add Ingredients
+						</button>
 					</div>
 				</form>
 			</div>

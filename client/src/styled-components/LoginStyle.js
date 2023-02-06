@@ -2,6 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const LoginStyle = createGlobalStyle`
 
+.login-card{
+  margin-top: 25px;
+}
 .login-form {
   background-color: #ffffff; 
   border: 1px solid #dbdbdb; 

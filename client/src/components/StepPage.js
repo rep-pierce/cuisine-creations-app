@@ -38,13 +38,14 @@ function StepPage({rID, setRID}) {
     return(
         <div className="steps-container">
             <br/>
-            <h3 className='step'>Add New Step</h3>
-            {steps.length > 0? steps.map(step => <StepCard step={step} key={Math.random()*1000000} handleDelete={handleDelete} inCreation={inCreation} />) : null}
+            {/* <h3 className='step'>Add New Step</h3> */}
             {[...Array(formCount)].map((x, i) => (
                 <StepForm key={Math.random()*1000000}steps={steps} setSteps={setSteps} rID={rID} />
-            ))}
-            {!errors ? null : errors.map((error) => <p key={Math.random()*1000000}>{error}</p>)}
-            <button className="button" onClick={handleSubmit}>Submit</button>
+                ))}
+                <button className="button" onClick={handleSubmit}>Submit</button>
+            {steps.length > 0? steps.map(step => <StepCard step={step} key={Math.random()*1000000} handleDelete={handleDelete} inCreation={inCreation} />) : null}
+            {!errors ? null : errors.map((error) => <p key={Math.random() * 1000000}>{error}</p>)}
+            <br/>
         </div>
     )
 }
