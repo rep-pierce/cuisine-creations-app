@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  require "openai"
   include ActionController::Cookies
   rescue_from ActiveRecord::RecordInvalid, with: :rescue_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
