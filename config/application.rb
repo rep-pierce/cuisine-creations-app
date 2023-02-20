@@ -18,11 +18,7 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-OpenAI.configure do |config|
-  config.access_token = ENV.fetch("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")
-end
-
-# ENV["OPENAI_API_KEY"] = "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"
+ENV["OPENAI_API_KEY"] = "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"
 
 module CuisineCreationsApp
   class Application < Rails::Application

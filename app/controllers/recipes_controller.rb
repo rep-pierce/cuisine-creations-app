@@ -13,8 +13,8 @@ class RecipesController < ApplicationController
 
   def create
     recipe = Recipe.create!(recipe_params)
-    client = OpenAI::Client.new
-    response = client.images.generate(parameters: { prompt: recipe.name, size: "256x256" })
+    client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
+    response = client.images.generate(parameters: { prompt: "#{recipe.name} and make it look appetizing", size: "256x256" })
     if recipe.image.blank?
       recipe.image = response.dig("data", 0, "url")
       recipe.save!
