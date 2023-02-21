@@ -18,7 +18,6 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-ENV["OPENAI_API_KEY"] = "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"
 
 module CuisineCreationsApp
   class Application < Rails::Application

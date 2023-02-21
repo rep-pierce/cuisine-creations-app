@@ -14,12 +14,19 @@ class RecipesController < ApplicationController
   def create
     recipe = Recipe.create!(recipe_params)
     client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
-    response = client.images.generate(parameters: { prompt: "#{recipe.name} and make it look appetizing", size: "256x256" })
+    recipe_image = client.images.generate(parameters: { prompt: "#{recipe.name} and make it look appetizing", size: "256x256" })
     if recipe.image.blank?
-      recipe.image = response.dig("data", 0, "url")
+      recipe.image = recipe_image.dig("data", 0, "url")
       recipe.save!
     end
+    response = client.completions(
+      parameters: {
+          model: "text-davinci-001",
+          prompt: "Once upon a time",
+          max_tokens: 5
+      })
     render json: recipe
+  debugger
   end
 
   def destroy
